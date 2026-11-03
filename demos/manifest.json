@@ -1,0 +1,363 @@
+[
+  {
+    "title": {
+      "zh-CN": "Hello World",
+      "en": "Hello World",
+      "zh-TW": "Hello World"
+    },
+    "desc": {
+      "zh-CN": "从一个函数组件开始，认识 TSX 与 bootstrap。",
+      "en": "Meet TSX and bootstrap through a single function component.",
+      "zh-TW": "從一個函式元件開始，認識 TSX 與 bootstrap。"
+    },
+    "order": 1,
+    "dir": "hello-world",
+    "id": "hello-world",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/hello-world/jinge",
+    "category": {
+      "zh-CN": "基础",
+      "en": "Basics",
+      "zh-TW": "基礎"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "条件渲染 If",
+      "en": "Conditional rendering",
+      "zh-TW": "條件渲染 If"
+    },
+    "desc": {
+      "zh-CN": "If 组件，以及 ? :、&& 的编译糖",
+      "en": "The If component and compiled ternary / && expressions.",
+      "zh-TW": "If 元件，以及 ? :、&& 的編譯糖"
+    },
+    "order": 10,
+    "id": "if",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/if",
+    "category": {
+      "zh-CN": "基础",
+      "en": "Basics",
+      "zh-TW": "基礎"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "表单输入",
+      "en": "Form inputs",
+      "zh-TW": "表單輸入"
+    },
+    "desc": {
+      "zh-CN": "原生表单控件与 vm 数据绑定",
+      "en": "Native form controls connected to VM data.",
+      "zh-TW": "原生表單控制元件與 vm 資料繫結"
+    },
+    "order": 11,
+    "id": "form-input",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/form-input",
+    "category": {
+      "zh-CN": "基础",
+      "en": "Basics",
+      "zh-TW": "基礎"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "简易待办",
+      "en": "Simple todos",
+      "zh-TW": "簡易待辦"
+    },
+    "desc": {
+      "zh-CN": "列表增删改查与 localStorage",
+      "en": "Create, update, and remove items with localStorage persistence.",
+      "zh-TW": "列表增刪改查與 localStorage"
+    },
+    "order": 12,
+    "id": "simple-todos",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/simple-todos",
+    "category": {
+      "zh-CN": "应用",
+      "en": "Applications",
+      "zh-TW": "應用"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "Todo MVC",
+      "en": "Todo MVC",
+      "zh-TW": "Todo MVC"
+    },
+    "desc": {
+      "zh-CN": "路由、过滤器与模块级 store",
+      "en": "Routes, filters, and a module-level store.",
+      "zh-TW": "路由、過濾器與模組級 store"
+    },
+    "order": 13,
+    "id": "todo-mvc",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/todo-mvc",
+    "category": {
+      "zh-CN": "应用",
+      "en": "Applications",
+      "zh-TW": "應用"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "数据侦听",
+      "en": "Watching state",
+      "zh-TW": "資料偵聽"
+    },
+    "desc": {
+      "zh-CN": "watch / vmWatch、深度监听与 changedPath",
+      "en": "watch / vmWatch, deep subscriptions, and changedPath.",
+      "zh-TW": "watch / vmWatch、深度監聽與 changedPath"
+    },
+    "order": 14,
+    "id": "watch",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/watch",
+    "category": {
+      "zh-CN": "进阶",
+      "en": "Advanced",
+      "zh-TW": "進階"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "过渡动画",
+      "en": "Transitions",
+      "zh-TW": "過渡動畫"
+    },
+    "desc": {
+      "zh-CN": "Transition 与 TransitionGroup",
+      "en": "Transition and TransitionGroup.",
+      "zh-TW": "Transition 與 TransitionGroup"
+    },
+    "order": 15,
+    "id": "transition",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/transition",
+    "category": {
+      "zh-CN": "进阶",
+      "en": "Advanced",
+      "zh-TW": "進階"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "递归组件",
+      "en": "Recursive components",
+      "zh-TW": "遞迴元件"
+    },
+    "desc": {
+      "zh-CN": "用函数组件渲染树形结构",
+      "en": "Render a tree with function components.",
+      "zh-TW": "用函式元件渲染樹形結構"
+    },
+    "order": 16,
+    "id": "recursion-component",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/recursion-component",
+    "category": {
+      "zh-CN": "进阶",
+      "en": "Advanced",
+      "zh-TW": "進階"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "Ref 与生命周期",
+      "en": "Refs and lifecycle",
+      "zh-TW": "Ref 與生命週期"
+    },
+    "desc": {
+      "zh-CN": "ref、expose、onMount / onUnmount",
+      "en": "ref、expose、onMount / onUnmount",
+      "zh-TW": "ref、expose、onMount / onUnmount"
+    },
+    "order": 17,
+    "id": "ref-and-life-cycle",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/ref-and-life-cycle",
+    "category": {
+      "zh-CN": "进阶",
+      "en": "Advanced",
+      "zh-TW": "進階"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "集成 ECharts",
+      "en": "ECharts integration",
+      "zh-TW": "整合 ECharts"
+    },
+    "desc": {
+      "zh-CN": "在组件中挂载第三方图表库",
+      "en": "Mount a third-party chart inside a component.",
+      "zh-TW": "在元件中掛載第三方圖表庫"
+    },
+    "order": 18,
+    "id": "integrated-with-echarts",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/integrated-with-echarts",
+    "category": {
+      "zh-CN": "应用",
+      "en": "Applications",
+      "zh-TW": "應用"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "插槽 Slots",
+      "en": "Slots",
+      "zh-TW": "插槽 Slots"
+    },
+    "desc": {
+      "zh-CN": "默认插槽、命名插槽、作用域插槽与插槽透传",
+      "en": "Default, named, and scoped slots, plus forwarding.",
+      "zh-TW": "預設插槽、命名插槽、作用域插槽與插槽透傳"
+    },
+    "order": 20,
+    "id": "slots",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/slots",
+    "category": {
+      "zh-CN": "基础",
+      "en": "Basics",
+      "zh-TW": "基礎"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "上下文 Context",
+      "en": "Context",
+      "zh-TW": "上下文 Context"
+    },
+    "desc": {
+      "zh-CN": "跨层级传递主题与配置，避免 props 逐层透传",
+      "en": "Share themes and configuration across component levels.",
+      "zh-TW": "跨層級傳遞主題與配置，避免 props 逐層透傳"
+    },
+    "order": 30,
+    "id": "context",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/context",
+    "category": {
+      "zh-CN": "进阶",
+      "en": "Advanced",
+      "zh-TW": "進階"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "事件 Events",
+      "en": "Events",
+      "zh-TW": "事件 Events"
+    },
+    "desc": {
+      "zh-CN": "原生事件、自定义事件与受控组件",
+      "en": "Native events, custom events, and controlled components.",
+      "zh-TW": "原生事件、自定義事件與受控元件"
+    },
+    "order": 40,
+    "id": "events",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/events",
+    "category": {
+      "zh-CN": "基础",
+      "en": "Basics",
+      "zh-TW": "基礎"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "列表渲染",
+      "en": "List rendering",
+      "zh-TW": "列表渲染"
+    },
+    "desc": {
+      "zh-CN": "keyed 重排、嵌套列表、空态与 nextTick",
+      "en": "Keyed reordering, nested lists, empty states, and nextTick.",
+      "zh-TW": "keyed 重排、巢狀列表、空態與 nextTick"
+    },
+    "order": 50,
+    "id": "list-rendering",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/list-rendering",
+    "category": {
+      "zh-CN": "基础",
+      "en": "Basics",
+      "zh-TW": "基礎"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "表单 Form",
+      "en": "Forms",
+      "zh-TW": "表單 Form"
+    },
+    "desc": {
+      "zh-CN": "input/select/radio/checkbox 等控件的绑定与汇总",
+      "en": "Bind and summarize input, select, radio, and checkbox values.",
+      "zh-TW": "input/select/radio/checkbox 等控制元件的繫結與彙總"
+    },
+    "order": 60,
+    "id": "form",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/form",
+    "category": {
+      "zh-CN": "基础",
+      "en": "Basics",
+      "zh-TW": "基礎"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "样式 Styling",
+      "en": "Styling",
+      "zh-TW": "樣式 Styling"
+    },
+    "desc": {
+      "zh-CN": "class 组合、style 字符串与 CSS 变量主题",
+      "en": "Class composition, style strings, and CSS variable themes.",
+      "zh-TW": "class 組合、style 字串與 CSS 變數主題"
+    },
+    "order": 70,
+    "id": "styling",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/styling",
+    "category": {
+      "zh-CN": "基础",
+      "en": "Basics",
+      "zh-TW": "基礎"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "动态组件",
+      "en": "Dynamic components",
+      "zh-TW": "動態元件"
+    },
+    "desc": {
+      "zh-CN": "Dynamic 切换、lazy 异步加载与状态重建",
+      "en": "Dynamic switching, lazy loading, and instance state.",
+      "zh-TW": "Dynamic 切換、lazy 非同步載入與狀態重建"
+    },
+    "order": 80,
+    "id": "dynamic-components",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/dynamic-components",
+    "category": {
+      "zh-CN": "进阶",
+      "en": "Advanced",
+      "zh-TW": "進階"
+    }
+  },
+  {
+    "title": {
+      "zh-CN": "国际化 i18n",
+      "en": "Internationalization",
+      "zh-TW": "國際化 i18n"
+    },
+    "desc": {
+      "zh-CN": "编译期 key、参数、富文本、语言切换与 CLI 流程",
+      "en": "Compile-time keys, parameters, rich text, locale switching, and CLI tools.",
+      "zh-TW": "編譯期 key、引數、富文本、語言切換與 CLI 流程"
+    },
+    "order": 90,
+    "id": "i18n",
+    "source": "https://github.com/jingeweb/jinge-demos/tree/master/packages/i18n",
+    "category": {
+      "zh-CN": "进阶",
+      "en": "Advanced",
+      "zh-TW": "進階"
+    }
+  }
+]

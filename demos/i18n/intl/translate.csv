@@ -1,0 +1,22 @@
+id,file,orig,zh,en
+1Ko2kn,src/app.tsx,增加计数,增加计数,Increase
+1VTdPd,src/app.tsx,5. 事件与状态,5. 事件与状态,5. Events and state
+2EZ/9H,src/app.tsx,3. 属性上的文本,3. 属性上的文本,3. Text in attributes
+5LvxtS,src/app.tsx,当前计数：{count},当前计数：{count},Current count: {count}
+5ZV1Ao,src/app.tsx,请输入你的名字,请输入你的名字,Please input your name
+EnPQvP,src/app.tsx,这里,这里,here
+IDwbQb,src/app.tsx,国际化示例,国际化示例,i18n Demo
+Jak65C,src/app.tsx,4. 富文本,4. 富文本,4. Rich text
+NZE2Cq,src/app.tsx,2. 带参数的文本,2. 带参数的文本,2. Text with params
+OV/1Xs,src/app.tsx,点击我,点击我,Click me
+UtgWDL,src/app.tsx,你好，{name}！,你好，{name}！,"Hello, {name}!"
+YwiFye,src/app.tsx,语言切换会立即更新模板中的文本，但不会重新执行组件函数。,语言切换会立即更新模板中的文本，但不会重新执行组件函数。,"Switching locale updates texts in the template immediately, without re-running the component function."
+demo.explicit,src/app.tsx,带显式 key 的文本：{value},带显式 key 的文本：{value},Text with an explicit key: {value}
+fn24jI,src/app.tsx,属性上的 t() 会被编译成 IntlWatcher，语言切换时属性值也会更新。,属性上的 t() 会被编译成 IntlWatcher，语言切换时属性值也会更新。,"t() in attributes compiles to IntlWatcher, so attribute values update on locale change."
+gyqdfD,src/app.tsx,这是一段普通的静态文本。,这是一段普通的静态文本。,This is a piece of plain static text.
+mU5Vos,src/app.tsx,1. 简单文本,1. 简单文本,1. Plain text
+s4pPKB,src/app.tsx,当前语言：,当前语言：,Current locale:
+u5gMOi,src/app.tsx,富文本的翻译里可以保留标签，编译时会从调用处的 JSX 中取出对应标签的渲染函数。,富文本的翻译里可以保留标签，编译时会从调用处的 JSX 中取出对应标签的渲染函数。,Rich-text translations can keep tags; the compiler extracts the tag renderers from the JSX at the call site.
+udDuLT,src/app.tsx,按钮已点击,按钮已点击,Button clicked
+vAhGAz,src/app.tsx,点击<a>{action}</a>查看详情。,点击<a>{action}</a>查看详情。,Click <a>{action}</a> for details.
+wAS0Ri,src/app.tsx,下面这些文本都会在编译时被替换成 6 位 key，并在运行时从字典中读取。,下面这些文本都会在编译时被替换成 6 位 key，并在运行时从字典中读取。,These texts are replaced with 6-character keys at compile time and read from dictionaries at runtime.

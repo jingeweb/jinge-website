@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /preview/
+Disallow: /zh-TW/preview/
+Disallow: /en/preview/

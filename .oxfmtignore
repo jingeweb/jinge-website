@@ -1,0 +1,7 @@
+site
+node_modules
+src/generated
+demos
+pnpm-lock.yaml
+playwright-report
+test-results

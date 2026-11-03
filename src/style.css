@@ -1,0 +1,312 @@
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities) source(none);
+
+@source './components';
+@source './pages';
+@source './main.tsx';
+@source '../scripts/content.mjs';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme inline {
+  --color-canvas: var(--bg);
+  --color-surface: var(--surface);
+  --color-subtle: var(--surface-alt);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-brand: var(--accent-text);
+  --color-code: var(--code-bg);
+  --shadow-site: var(--shadow);
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+
+/* Keep native form defaults: the isolated learning demos do not use Preflight. */
+@layer base {
+  :root {
+    color-scheme: light;
+    --bg: #fbfcf8;
+    --surface: #fff;
+    --surface-alt: #f2f4ed;
+    --text: #22382b;
+    --muted: #718073;
+    --line: #e2e7dc;
+    --accent: #d6fa6a;
+    --accent-text: #3b602e;
+    --code-bg: #fafbf8;
+    --shadow: 0 24px 65px -35px #34532c50;
+    font-family:
+      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
+      sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    --bg: #151d18;
+    --surface: #1b251e;
+    --surface-alt: #202c23;
+    --text: #e4ecdf;
+    --muted: #a0afa0;
+    --line: #334136;
+    --accent-text: #c6ec96;
+    --code-bg: #18211b;
+    --shadow: 0 24px 65px -35px #0009;
+  }
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 105px;
+  }
+  body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  button {
+    font: inherit;
+  }
+  input {
+    font: inherit;
+  }
+  select {
+    font: inherit;
+  }
+  textarea {
+    font: inherit;
+  }
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+  input {
+    -webkit-tap-highlight-color: transparent;
+  }
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button {
+    cursor: pointer;
+    color: inherit;
+  }
+  button:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+  button {
+    accent-color: #6d8c38;
+  }
+  input {
+    accent-color: #6d8c38;
+  }
+  select {
+    accent-color: #6d8c38;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  button {
+    border: 0;
+  }
+  button {
+    touch-action: manipulation;
+  }
+  a {
+    touch-action: manipulation;
+  }
+  svg {
+    flex-shrink: 0;
+  }
+  img {
+    max-width: 100%;
+  }
+  ::selection {
+    background: #d6fa6a;
+    color: #253624;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 4px;
+  }
+  main:focus {
+    outline: none;
+  }
+  button {
+    transition:
+      background 0.18s,
+      color 0.18s,
+      border-color 0.18s,
+      transform 0.18s;
+  }
+  a {
+    transition:
+      background 0.18s,
+      color 0.18s,
+      border-color 0.18s,
+      transform 0.18s;
+  }
+  code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  }
+  pre {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  }
+  kbd {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  }
+  h1 {
+    margin-top: 0;
+  }
+  h2 {
+    margin-top: 0;
+  }
+  h3 {
+    margin-top: 0;
+  }
+  p {
+    margin-top: 0;
+  }
+  h1 {
+    font-weight: 650;
+    line-height: 1.35;
+  }
+  h2 {
+    font-weight: 650;
+    line-height: 1.35;
+  }
+  h3 {
+    font-weight: 650;
+    line-height: 1.35;
+  }
+  .shiki {
+    background: transparent !important;
+  }
+  .shiki {
+    color: var(--shiki-light);
+  }
+  .shiki span {
+    color: var(--shiki-light);
+  }
+  :root[data-theme='dark'] .shiki {
+    color: var(--shiki-dark);
+  }
+  :root[data-theme='dark'] .shiki span {
+    color: var(--shiki-dark);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
+/* Markdown is generated at build time; its typography stays in one place. */
+@layer components {
+  .prose {
+    @apply text-[14px] leading-[1.95] wrap-anywhere text-ink;
+  }
+  .prose h2 {
+    @apply relative mx-0 mt-10 mb-4.5 [scroll-margin-top:110px] text-[21px] tracking-[-0.35px];
+  }
+  .prose h2:first-child {
+    @apply mt-0;
+  }
+  .prose h3 {
+    @apply mt-6.5 text-[17px];
+  }
+  .prose p {
+    @apply mx-0 my-3.75;
+  }
+  .prose > p:first-child {
+    @apply mt-0;
+  }
+  .prose a {
+    @apply text-brand underline [text-decoration-color:#91aa6d77] [text-underline-offset:3px];
+  }
+  .prose a:hover {
+    @apply [text-decoration-color:currentColor];
+  }
+  .prose code:not(pre code) {
+    @apply rounded border border-solid border-line bg-subtle px-1.25 py-0.5 text-[0.88em] text-brand;
+  }
+  .prose ul {
+    @apply pl-5;
+  }
+  .prose ol {
+    @apply pl-5;
+  }
+  .prose li {
+    @apply mx-0 my-1.75;
+  }
+  .prose table {
+    @apply mx-0 my-5.5 block w-full max-w-full border-collapse border-spacing-0 overflow-x-auto text-[12px];
+  }
+  .prose th {
+    @apply bg-subtle text-left font-semibold;
+  }
+  .prose th {
+    @apply border border-solid border-line px-3.25 py-2.5;
+  }
+  .prose td {
+    @apply border border-solid border-line px-3.25 py-2.5;
+  }
+  .heading-anchor {
+    @apply ml-2.25 text-[0.8em] no-underline! opacity-0;
+  }
+  .prose h2:hover .heading-anchor {
+    @apply opacity-50;
+  }
+  .heading-anchor:focus {
+    @apply opacity-50;
+  }
+  .code-block {
+    @apply mx-0 my-5.5 overflow-hidden rounded-[7px] border border-solid border-line bg-code;
+  }
+  .code-label {
+    @apply flex items-center justify-between border-b border-solid border-b-line px-3.75 py-2 font-mono text-[10px] leading-[normal] font-normal text-muted;
+  }
+  .code-label button {
+    @apply bg-transparent px-0.25 py-0 [font-family:system-ui] text-[10px] leading-[normal] font-normal text-muted;
+  }
+  .code-label button:hover {
+    @apply text-ink;
+  }
+  .code-block pre {
+    @apply m-0 overflow-x-auto p-4.5 text-[11px] leading-[1.85] [tab-size:2];
+  }
+  @media (width <= 700px) {
+    .prose {
+      @apply text-[13px];
+    }
+  }
+  @media (width <= 700px) {
+    .prose h2 {
+      @apply mt-8 text-[20px];
+    }
+  }
+  @media (width <= 700px) {
+    .code-block pre {
+      @apply p-3.5 text-[10px];
+    }
+  }
+}

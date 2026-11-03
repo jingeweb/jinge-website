@@ -1,0 +1,5 @@
+node_modules/
+/site/
+src/generated/
+/intl/*.tsx
+.DS_Store

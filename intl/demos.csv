@@ -1,0 +1,225 @@
+source,zh-TW,en
+" <If expect={state.show}>
+  <div>我显示出来啦！</div>
+</If>
+<button on:click={() => (state.show = !state.show)}>
+  <If expect={state.show} slot:else={'显示'}>
+    隐藏
+  </If>
+</button>"," <If expect={state.show}>
+  <div>我顯示出來啦！</div>
+</If>
+<button on:click={() => (state.show = !state.show)}>
+  <If expect={state.show} slot:else={'顯示'}>
+    隱藏
+  </If>
+</button>"," <If expect={state.show}>
+  <div>Now you can see me!</div>
+</If>
+<button on:click={() => (state.show = !state.show)}>
+  <If expect={state.show} slot:else={'Show'}>
+    Hide
+  </If>
+</button>"
+1. 组件自定义事件,1. 元件自定義事件,1. Custom component events
+1. 默认插槽与兜底,1. 預設插槽與兜底,1. Default slots and fallbacks
+2. 受控与非受控组件,2. 受控與非受控元件,2. Controlled and uncontrolled components
+2. 命名插槽,2. 命名插槽,2. Named slots
+3. 作用域插槽,3. 作用域插槽,3. Scoped slots
+3. 动态 handler,3. 動態 handler,3. Dynamic handler
+4. 捕获、双击、键盘,4. 捕獲、雙擊、鍵盤,"4. Capture, double click, and keyboard"
+4. 插槽透传,4. 插槽透傳,4. Forwarding slots
+5. 事件委托与表单提交,5. 事件委託與表單提交,5. Delegation and form submission
+5. 插槽内容里的数据绑定,5. 插槽內容裡的資料繫結,5. Reactive data inside slots
+<Dynamic fc={...} /> 会在 fc 变化时销毁旧组件、渲染新组件；它和 If 的区别是切换的是“组件类型”而不是条件。,<Dynamic fc={...} /> 會在 fc 變化時銷毀舊元件、渲染新元件；它和 If 的區別是切換的是“元件型別”而不是條件。,"<Dynamic fc={...} /> destroys the previous component and renders a new one when fc changes. Unlike If, it switches the component type rather than a condition."
+CSS 变量驱动的主题,CSS 變數驅動的主題,A theme driven by CSS variables
+ECharts 集成,ECharts 整合,ECharts integration
+If 条件判定和渲染,If 條件判定和渲染,Conditional rendering with If
+bubble：外层冒泡,bubble：外層冒泡,bubble: outer element
+capture：外层捕获,capture：外層捕獲,capture: outer element
+change 事件：{0},change 事件：{0},change event: {0}
+"className 用 cx 组合：cx(""theme"", dark && ""dark"", rounded && ""rounded"")。","className 用 cx 組合：cx(""theme"", dark && ""dark"", rounded && ""rounded"")。","Combine className with cx(""theme"", dark && ""dark"", rounded && ""rounded"")."
+context 只能在组件渲染期间写入。渲染结束后 host 会被还原，在 onMount / 事件回调里再写就会抛错：,context 只能在元件渲染期間寫入。渲染結束後 host 會被還原，在 onMount / 事件回呼裡再寫就會拋錯：,"Provide Context during component rendering. The current host is restored afterward, so writing Context in onMount or an event callback throws:"
+context 在渲染期间向下传递，组件可以跨任意层级读取，不必逐层透传 props。context 的值本身是 vm，所以深层组件里的读取依然是响应式的。,context 在渲染期間向下傳遞，元件可以跨任意層級讀取，不必逐層透傳 props。context 的值本身是 vm，所以深層元件裡的讀取依然是響應式的。,"Context passes values down during rendering, without forwarding Props at every level. This value is a VM, so reads in deeply nested components remain reactive."
+dblclick：双击,dblclick：雙擊,dblclick: double click
+handler A 被调用,handler A 被呼叫,Handler A called
+handler B 被调用,handler B 被呼叫,Handler B called
+jinge 框架中，一切都是组件，也只有组件、属性和插槽的概念。,jinge 框架中，一切都是元件，也只有元件、屬性和插槽的概念。,"Jinge builds interfaces from components, properties, and slots."
+jinge 没有 v-model：原生控件通过 value / checked / selected 属性绑定，再通过 on:input / on:change 写回数据。,jinge 沒有 v-model：原生控制元件通過 value / checked / selected 屬性繫結，再通過 on:input / on:change 寫回資料。,"Jinge has no v-model. Native controls read value, checked, or selected attributes and write changes back through on:input or on:change."
+jinge 没有合成事件：DOM 事件通过 on: 前缀直接映射到 addEventListener，组件事件就是普通的 on:xxx 回调属性。,jinge 沒有合成事件：DOM 事件通過 on: 字首直接對映到 addEventListener，元件事件就是普通的 on:xxx 回呼屬性。,"Jinge has no synthetic events. DOM events map directly to addEventListener through on: attributes, while component events are ordinary on:xxx callback properties."
+jinge 的插槽在编译后就是组件 props 上的函数（slot:default / slot:名称），由组件决定把函数渲染到哪个位置。,jinge 的插槽在編譯後就是元件 props 上的函式（slot:default / slot:名稱），由元件決定把函式渲染到哪個位置。,Compiled slots are functions on component Props (slot:default or slot:name). The component chooses where to render them.
+jinge 直接使用 className（会被编译成 class 属性）与 style 字符串，没有内置的 scoped CSS，也没有对象形式的 style。,jinge 直接使用 className（會被編譯成 class 屬性）與 style 字串，沒有內建的 scoped CSS，也沒有物件形式的 style。,Jinge uses className (compiled to class) and style strings. There is no built-in scoped CSS or object-style API.
+on:click={state.handler} 会被编译成 watchPathForDOMEventBind：值变化时先解绑旧函数，再绑定新函数。,on:click={state.handler} 會被編譯成 watchPathForDOMEventBind：值變化時先解綁舊函式，再繫結新函式。,on:click={state.handler} compiles to watchPathForDOMEventBind: a changed value removes the previous listener before binding the next.
+"on:clickCapture 等价于 addEventListener(..., true)；on:doubleClick 会被编译成 dblclick。","on:clickCapture 等價於 addEventListener(..., true)；on:doubleClick 會被編譯成 dblclick。","on:clickCapture corresponds to addEventListener(..., true); on:doubleClick compiles to dblclick."
+push 前 {0} 个 <li>，push 后立即读取 {1} 个，await nextTick() 后 {2} 个。,push 前 {0} 個 <li>，push 後立即讀取 {1} 個，await nextTick() 後 {2} 個。,Before push: {0} <li> nodes. Immediately after: {1}. After await nextTick(): {2}.
+submit：已阻止默认提交,submit：已阻止預設提交,submit: default submission prevented
+target：内层按钮,target：內層按鈕,target: inner button
+"{state.show ? <div>出来啦！</div> : <div>不见啦!</div>}
+<button on:click={() => (state.show = !state.show)}>{state.show ? '隐藏' : '显式'}</button>","{state.show ? <div>出來啦！</div> : <div>不見啦!</div>}
+<button on:click={() => (state.show = !state.show)}>{state.show ? '隱藏' : '顯式'}</button>","{state.show ? <div>Visible!</div> : <div>Hidden!</div>}
+<button on:click={() => (state.show = !state.show)}>{state.show ? 'Hide' : 'Show'}</button>"
+上下文 Context,上下文 Context,Context
+上海,上海,Shanghai
+上述代码的效果如下：,上述程式碼的效果如下：,The code above renders as follows:
+上面例子代码是：,上面例子程式碼是：,Source for the example above:
+不见啦!,不見啦!,Hidden!
+个人信息,個人資訊,Profile
+为了书写上更方便，也为了兼容 React 的 tsx 的写法，jinge 编译器可以把,為了書寫上更方便，也為了相容 React 的 tsx 的寫法，jinge 編譯器可以把,"For a concise TSX form, the Jinge compiler can convert"
+主色来自内联的 --tone 变量，背景与文字来自 .theme / .theme.dark 上的变量。,主色來自內聯的 --tone 變數，背景與文字來自 .theme / .theme.dark 上的變數。,The inline --tone variable controls the accent. Variables on .theme and .theme.dark control background and text.
+主色：,主色：,Primary color:
+主题：,主題：,Theme:
+事件 Events,事件 Events,Events
+事件日志,事件日誌,Event log
+共享的父布局,共享的父佈局,SHARED PARENT LAYOUT
+其他,其他,Other
+内部维护状态,內部維護狀態,State managed internally
+写代码,寫程式碼,Coding
+写入时机的约束,寫入時機的約束,When Context can be provided
+出来啦！,出來啦！,Visible!
+切换 handler,切換 handler,Switch handler
+切换主色,切換主色,Change primary color
+切换圆角,切換圓角,Toggle rounded corners
+切换明暗,切換明暗,Toggle theme
+切换标签宽度,切換標籤寬度,Change label width
+切换激活态,切換啟用態,Toggle active state
+切换禁用,切換停用,Toggle disabled state
+列表为空,列表為空,The list is empty
+列表渲染,列表渲染,List rendering
+初始（appear）渲染时就展示动态。,初始（appear）渲染時就展示動態。,Animate the initial render with appear.
+删除,刪除,Remove
+前进,前進,Forward
+加载失败：{0},載入失敗：{0},Loading failed: {0}
+加载完成。,載入完成。,Loaded.
+动态组件,動態元件,Dynamic components
+北京,北京,Beijing
+协议,協議,Agreement
+双击我,雙擊我,Double click me
+反转,反轉,Reverse
+受控,受控,Controlled
+后退,後退,Back
+否,否,No
+命名插槽,命名插槽,Named slot
+命名插槽用 slot:名称={...} 属性传入，而不是写在子元素里。,命名插槽用 slot:名稱={...} 屬性傳入，而不是寫在子元素裡。,"Pass a named slot through a slot:name={...} attribute, rather than through a child element."
+土豆,土豆,Potato
+在行的输入框里输入内容，然后点“随机排序 / 反转”：keyed 模式下输入内容会跟着数据行移动；unkeyed 模式下输入内容会留在原来的位置。,在行的輸入框裡輸入內容，然後點“隨機排序 / 反轉”：keyed 模式下輸入內容會跟著資料行移動；unkeyed 模式下輸入內容會留在原來的位置。,Type in a row and choose Shuffle or Reverse. In keyed mode the input follows its data row; in unkeyed mode it stays in the same visible position.
+在这里按键,在這裡按鍵,Press a key here
+在这里输入点内容，再重排观察 DOM 是否跟随,在這裡輸入點內容，再重排觀察 DOM 是否跟隨,"Type here, then reorder to see whether the DOM follows"
+城市（单选）,城市（單選）,City (single selection)
+城市（多选）,城市（多選）,Cities (multiple selection)
+基础类型数组,基礎型別陣列,Primitive arrays
+基础类型数组用 KEY_DATA 以元素本身作为 key；也可以用 KEY_INDEX 以索引作为 key（不推荐，重排时会失去复用）。,基礎型別陣列用 KEY_DATA 以元素本身作為 key；也可以用 KEY_INDEX 以索引作為 key（不推薦，重排時會失去複用）。,Use KEY_DATA to key a primitive array by its values. KEY_INDEX uses positions instead and does not preserve item identity during reordering.
+女,女,Female
+姓名,姓名,Name
+"子组件通过 props[""on:change""]?.(value) 通知父组件；父组件把 step 传成动态值：","子元件通過 props[""on:change""]?.(value) 通知父元件；父元件把 step 傳成動態值：","The child calls props[""on:change""]?.(value) to notify its parent. The parent passes a dynamic step:"
+密码,密碼,Password
+嵌套列表,巢狀列表,Nested lists
+嵌套布局,巢狀佈局,Nested layout
+已提交，数据见右侧汇总。,已提交，資料見右側彙總。,Submitted. See the data summary.
+年龄,年齡,Age
+异步面板,非同步面板,Async panel
+异步面板演示 lazy()：首次进入时先渲染 slot:loading，加载完成后替换为真实组件；loader 抛错时渲染 slot:error。,非同步面板演示 lazy()：首次進入時先渲染 slot:loading，載入完成後替換為真實元件；loader 拋錯時渲染 slot:error。,"The async panel demonstrates lazy(): slot:loading appears first, then the loaded component replaces it. A rejected loader displays slot:error."
+当前 handler：,當前 handler：,Current handler:
+当前实例：#{0},當前例項：#{0},Current instance: #{0}
+当前标签：,當前標籤：,Current tab:
+当前：keyed,當前：keyed,Current: keyed
+当前：unkeyed,當前：unkeyed,Current: unkeyed
+循环列表动态（Transition-Group）示例,迴圈列表動態（Transition-Group）範例,List animation with TransitionGroup
+性别,性別,Gender
+我已阅读并同意用户协议,我已閱讀並同意使用者協議,I have read and agree to the user agreement
+我显示出来啦！,我顯示出來啦！,Now you can see me!
+按名称排序,按名稱排序,Sort by name
+换行、长度都会实时汇总到右侧,換行、長度都會即時彙總到右側,Line breaks and length update in the summary
+提交,提交,Submit
+提交表单,提交表單,Submit form
+插槽 Slots,插槽 Slots,Slots
+插槽函数只在宿主组件渲染时被调用一次，但函数内部创建的 watcher 会持续跟随数据变化。需要切换“渲染哪段结构”时，请使用 If / Dynamic 等组件，而不是条件性地传不同的插槽函数。,插槽函式只在宿主元件渲染時被呼叫一次，但函式內部建立的 watcher 會持續跟隨資料變化。需要切換“渲染哪段結構”時，請使用 If / Dynamic 等元件，而不是條件性地傳不同的插槽函式。,"A slot runs once when its host renders, but its watchers continue following data changes. Switch structures with If or Dynamic instead of conditionally passing different slot functions."
+插槽函数可以接收组件传入的参数。参数是普通对象时只渲染一次；如果参数里包含可变数据，编译器会为它建立绑定。,插槽函式可以接收元件傳入的引數。引數是普通物件時只渲染一次；如果引數裡包含可變資料，編譯器會為它建立繫結。,A function slot receives arguments from the component. Ordinary values render once; mutable data receives compiler-generated bindings.
+插槽是函数，内容是响应式的,插槽是函式，內容是響應式的,Slots are functions with reactive content
+插槽里的数据仍然响应式更新：,插槽裡的資料仍然響應式更新：,Data inside the slot still updates reactively:
+无状态面板。切换 tab 后，这里输入的内容会随着 DOM 一起销毁。,無狀態面板。切換 tab 後，這裡輸入的內容會隨著 DOM 一起銷毀。,This panel has no persistent state. Switching tabs destroys the DOM and its input value.
+是,是,Yes
+昵称,暱稱,Nickname
+显式,顯式,Show
+显示,顯示,Show
+显示/隐藏切换时使用不同的动态效果(隐藏时更快），隐藏后销毁 DOM。,顯示/隱藏切換時使用不同的動態效果(隱藏時更快），隱藏後銷毀 DOM。,"Use different entry and exit effects (a faster exit), then destroy the DOM after leaving."
+有默认插槽,有預設插槽,With a default slot
+条目 A,條目 A,Item A
+条目 B,條目 B,Item B
+条目 C,條目 C,Item C
+条目 {0},條目 {0},Item {0}
+杭州,杭州,Hangzhou
+样式 Styling,樣式 Styling,Styling
+根据条件语句进行不同的渲染，也是由,根據條件語句進行不同的渲染，也是由,Conditional rendering is handled by the
+概览,概覽,Overview
+模板里的 .map() 会被编译成 <For> 组件。key 取自 map 回调返回的第一个根元素；没有 key 时按索引原地复用。,模板裡的 .map() 會被編譯成 <For> 元件。key 取自 map 回呼返回的第一個根元素；沒有 key 時按索引原地複用。,"Template .map() calls compile to For components. The first returned root supplies the key. Without a key, nodes are reused by index."
+水果,水果,Fruit
+"汇总通过 watch(form, ...) 深度监听后 JSON.stringify(vmRaw(form)) 得到；vmRaw 用于拿到不含 Proxy 的原始数据。","彙總通過 watch(form, ...) 深度監聽後 JSON.stringify(vmRaw(form)) 得到；vmRaw 用於拿到不含 Proxy 的原始資料。","The summary uses watch(form, ...) for deep changes and JSON.stringify(vmRaw(form)). vmRaw retrieves the original data without its Proxy."
+没有传入默认插槽时显示这段兜底内容。,沒有傳入預設插槽時顯示這段兜底內容。,This fallback appears when no default slot is provided.
+没有匹配的页面,沒有匹配的頁面,No matching page
+没有默认插槽,沒有預設插槽,Without a default slot
+注意：Dynamic 切换会销毁旧实例，组件内部状态不会保留；如果需要缓存，需要自己把状态提升到外层或使用 KeepAlive 一类的方案（jinge 暂未内置）。,注意：Dynamic 切換會銷毀舊例項，元件內部狀態不會保留；如果需要快取，需要自己把狀態提升到外層或使用 KeepAlive 一類的方案（jinge 暫未內建）。,Switching Dynamic destroys the previous instance and its local state. Lift state outside the component if it should survive. Jinge has no built-in KeepAlive.
+浅色,淺色,Light
+深圳,深圳,Shenzhen
+深色,深色,Dark
+添加并测量,新增並測量,Add and measure
+激活状态：off,啟用狀態：off,Active state: off
+激活状态：on,啟用狀態：on,Active state: on
+点击“添加并测量”，观察 DOM 更新的时机。,點選“新增並測量”，觀察 DOM 更新的時機。,Choose Add and measure to observe when the DOM updates.
+点击上面的示例，日志会出现在这里。,點選上面的範例，日誌會出現在這裡。,Interact with the examples above to see their event logs here.
+点击用户链接，观察路径参数与 query 的变化。,點選使用者連結，觀察路徑引數與 query 的變化。,Choose a user link to observe route parameters and query changes.
+点我,點我,Click me
+爱好,愛好,Interests
+生日,生日,Birthday
+用户,使用者,User
+用户 1,使用者 1,User 1
+用户 2,使用者 2,User 2
+用户 2 · activity,使用者 2 · activity,User 2 · activity
+由 Field 组件传入的 placeholder,由 Field 元件傳入的 placeholder,Placeholder provided by Field
+男,男,Male
+简介,簡介,About
+简单地显示/隐藏切换。不销毁 DOM。,簡單地顯示/隱藏切換。不銷毀 DOM。,Toggle visibility without destroying the DOM.
+组件加载中（800ms）...,元件載入中（800ms）...,Loading component (800ms)...
+组件支撑。例如：,元件支撐。例如：,component. For example:
+胡萝卜,胡蘿蔔,Carrot
+至少 6 位,至少 6 位,At least 6 characters
+苹果,蘋果,Apple
+蔬菜,蔬菜,Vegetables
+表单 Form,表單 Form,Forms
+表单数据汇总,表單資料彙總,Form data summary
+表单禁用：,表單停用：,Form disabled:
+表达式自动转成使用 If 组件的写法。例如上述例子可以写成：,表示式自動轉成使用 If 元件的寫法。例如上述例子可以寫成：,expressions into If components. The example can also be written as:
+解锁表单,解鎖表單,Unlock form
+计数器,計數器,Counter
+设置,設定,Settings
+运动,運動,Sports
+这个面板是异步加载的：lazy() + 动态 import，构建时会被拆成独立的 chunk。,這個面板是非同步載入的：lazy() + 動態 import，構建時會被拆成獨立的 chunk。,This panel loads with lazy() and dynamic import. The build produces a separate chunk.
+这是 Panel 自己的默认插槽内容，会进入 Card 的 body。,這是 Panel 自己的預設插槽內容，會進入 Card 的 body。,Panel’s own default content renders in Card’s body.
+这是响应式参数。切换用户时，页面组件会被复用。,這是響應式引數。切換使用者時，頁面元件會被複用。,These parameters are reactive. Changing users reuses the same page component.
+这是第三层组件，没有经过任何 props 传递：,這是第三層元件，沒有經過任何 props 傳遞：,This third-level component receives no forwarded Props:
+这是组件内部状态。切换到别的 tab 再切回来，实例会被销毁重建，计数会归零。,這是元件內部狀態。切換到別的 tab 再切回來，例項會被銷毀重建，計數會歸零。,This state belongs to the component instance. Switch tabs and return to create a new instance with a count of zero.
+这段内容会渲染到 Card 的 props.children 位置。,這段內容會渲染到 Card 的 props.children 位置。,This content renders at Card’s props.children.
+这段内容来自 App，经 Panel 透传到 Card 的 footer 插槽。,這段內容來自 App，經 Panel 透傳到 Card 的 footer 插槽。,This content comes from App and passes through Panel to Card’s footer slot.
+这里是嵌套布局的默认子页面。,這裡是巢狀佈局的預設子頁面。,This is the index page in the nested layout.
+这里是设置页面。上方的项目布局保留。,這裡是設定頁面。上方的專案佈局保留。,This is Settings. The workspace layout above is retained.
+进度,進度,Progress
+透传,透傳,Forwarding
+通过 Ref 挂载图表，组件销毁时释放实例。,通過 Ref 掛載圖表，元件銷毀時釋放例項。,Mount a chart through a Ref and dispose of it when the component is destroyed.
+通过 slot:footer 传入的页脚。,通過 slot:footer 傳入的頁尾。,A footer passed through slot:footer.
+邮箱,郵箱,Email
+重置,重置,Reset
+锁定表单,鎖定表單,Lock form
+阅读,閱讀,Reading
+随便输入点什么,隨便輸入點什麼,Type anything
+随机排序,隨機排序,Shuffle
+隐藏,隱藏,Hide
+非受控,非受控,Uncontrolled
+音乐,音樂,Music
+音量,音量,Volume
+页面，从这里连接。,頁面，從這裡連線。,Connect your pages here.
+项目空间,專案空間,Workspace
+首页,首頁,Home
+香蕉,香蕉,Banana
+默认页脚,預設頁尾,Default footer
+（空）,（空）,(empty)
+（还没有按键）,（還沒有按鍵）,(no key pressed yet)
+，当前计数 ,，當前計數 ,", current count "

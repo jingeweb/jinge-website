@@ -1,0 +1,97 @@
+:root {
+  font:
+    14px/1.8 system-ui,
+    sans-serif;
+  color: #273d31;
+  background: #fff;
+}
+body {
+  margin: 0;
+  padding: 24px;
+}
+* {
+  box-sizing: border-box;
+}
+button,
+a {
+  font: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+}
+.address {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid #dce3d9;
+  background: #f7f9f4;
+  padding: 10px;
+  border-radius: 10px;
+}
+.address button {
+  border: 0;
+  background: none;
+  font-size: 20px;
+}
+.address code {
+  font-size: 13px;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 28px;
+  margin-top: 20px;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-right: 1px solid #e5eade;
+  padding-right: 16px;
+}
+.sidebar a,
+.sidebar button {
+  border: 0;
+  background: none;
+  text-decoration: none;
+  text-align: left;
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+.sidebar .selected {
+  background: #e6f2d6;
+  color: #365e28;
+}
+.label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #6c796e;
+}
+h2 {
+  font-size: 24px;
+  line-height: 1.4;
+}
+.workspace nav {
+  display: flex;
+  gap: 20px;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #39794f;
+  outline-offset: 3px;
+}
+@media (max-width: 500px) {
+  body {
+    padding: 14px;
+  }
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 0;
+    padding: 0;
+  }
+}
