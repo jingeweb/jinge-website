@@ -58,4 +58,19 @@ function App() {
 
 ## 演進歷史
 
-> 本節內容稍後補齊。
+幾個關鍵轉折，按時間排列：
+
+| 時間    | 變化                                                                                                                                              | 提交                                                                                                         |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 2019.02 | 首個提交，框架與範例倉庫 [jinge-demos](https://github.com/jingeweb/jinge-demos) 同日起步                                                          | [`3995937`](https://github.com/jingeweb/jinge/commit/3995937f47b27d058c9c4360455e577d707e0dd7)               |
+| 2020.01 | [jinge-material](https://github.com/jingeweb/jinge-material) 發布 1.0.0，元件庫首次上線，附帶完整[文件站點](https://jingeweb.github.io/material/) | [`287422e`](https://github.com/jingeweb/jinge-material/commit/287422eabf206b79ae36aefef2e47ddece1bed9a)      |
+| 2020.04 | [jinge-router](https://github.com/jingeweb/jinge-router) 獨立成庫                                                                                 | [`45fdb8e`](https://github.com/jingeweb/jinge-router/commit/45fdb8e9c4ac986c9dfcb5f2c359ba1f9428793d)        |
+| 2020.05 | 用 TypeScript 重寫框架（v2）                                                                                                                      | [`e57bfe8`](https://github.com/jingeweb/jinge/commit/e57bfe837ac8d7c02c68f9afbc013bca0915d6a5)               |
+| 2020.06 | v3.0，跟進 webpack 5                                                                                                                              | [`d6a891e`](https://github.com/jingeweb/jinge/commit/d6a891ef1df2bd78ad14dac62046f3724772f329)               |
+| 2022.05 | 模板編譯器獨立成倉庫：TypeScript 實作，模板是類 Angular 的 HTML 檔                                                                                | [`46f4720`](https://github.com/jingeweb/jinge-compiler/commit/46f4720ab9ac80d7f2114301b000f93ba6e006d9)      |
+| 2022.08 | [jinge-material](https://github.com/jingeweb/jinge-material) 停止維護，最後一個版本 3.0.3。**已過期**                                             | [`e4a3d51`](https://github.com/jingeweb/jinge-material/commit/e4a3d517c5f1431da4bc595b693712f505b88b5b)      |
+| 2024.07 | 編譯器用 Rust 重寫，模板從 HTML 改為標準 TSX                                                                                                      | [`51fda81`](https://github.com/jingeweb/jinge-rust-compiler/commit/51fda8173ff7ff0a2779e5e67a295e905c66c02d) |
+| 2025.02 | [jinge-antd](https://jinge-antd.embjs.com) 元件庫開始實施，進行中                                                                                 | —                                                                                                            |
+| 2026.11 | 在 AI 加持下完成 [jinge-antd](https://jinge-antd.embjs.com) 元件庫並發布文件站，發布框架官網與文件（[jinge.embjs.com](https://jinge.embjs.com)）  | —                                                                                                            |
+
+兩次語言級重寫（框架一次、編譯器一次），一次模板範式遷移（HTML → TSX），這條線從 2019 年一直走到現在。

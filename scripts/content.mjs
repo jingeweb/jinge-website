@@ -118,6 +118,14 @@ for (const file of await walk('content')) {
     if (token.depth === 2) toc.push({ id: headingId, text });
     return `<h${token.depth} id="${headingId}" aria-label="${escape(text)}">${this.parser.parseInline(token.tokens)}<a class="heading-anchor" href="#${headingId}" aria-label="${escape(buildText.anchor[locale].replace('{0}', text))}">#</a></h${token.depth}>`;
   };
+  renderer.link = function (token) {
+    const label = this.parser.parseInline(token.tokens);
+    const title = token.title ? ` title="${escape(token.title)}"` : '';
+    // External targets (commit links, docs sites) open in a new tab, matching the header links.
+    const external = /^https?:/i.test(token.href);
+    const attrs = external ? ' target="_blank" rel="noreferrer"' : '';
+    return `<a href="${escape(token.href)}"${title}${attrs}>${label}</a>`;
+  };
   renderer.code = ({ text, lang }) =>
     `<div class="code-block"><div class="code-label"><span>${escape(lang ?? 'text')}</span><button type="button" data-copy-code>${buildText.copyCode[locale]}</button></div>${highlight(text, lang)}</div>`;
   const html = localizedLinks(await marked.parse(body, { renderer }), locale);

@@ -35,6 +35,7 @@ export default defineConfig({
     },
   },
   server: {
+    port: 8081,
     watch: {
       ignored: [root + '/**', resolve('src/generated') + '/**'],
     },
