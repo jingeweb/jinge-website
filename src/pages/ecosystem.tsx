@@ -1,5 +1,6 @@
 import { t } from 'jinge';
 
+import { Icon } from '../components/icon';
 import { setMeta } from '../data';
 import { href } from '../i18n';
 
@@ -76,7 +77,7 @@ export function Ecosystem() {
                 target="_blank"
                 rel="noreferrer"
               >
-                ↗
+                <Icon name="arrow-outward" />
               </a>
             </div>
             <h2>{pkg.name}</h2>
@@ -88,7 +89,7 @@ export function Ecosystem() {
                 target={pkg.external ? '_blank' : undefined}
                 rel={pkg.external ? 'noreferrer' : undefined}
               >
-                {t('阅读文档 →')}
+                {t('阅读文档')} <Icon name="arrow-forward" className="text-[12px]" />
               </a>
               <a
                 className="quiet-link text-[12px] text-muted hover:text-ink"
@@ -96,7 +97,7 @@ export function Ecosystem() {
                 target="_blank"
                 rel="noreferrer"
               >
-                GitHub ↗
+                GitHub <Icon name="open-in-new" className="text-[11px]" />
               </a>
             </div>
           </article>
@@ -119,7 +120,10 @@ export function Ecosystem() {
             target="_blank"
             rel="noreferrer"
           >
-            {t('参与贡献 ↗')}
+            <span className="inline-flex items-center gap-1.5">
+              {t('参与贡献')}
+              <Icon name="open-in-new" className="text-[13px]" />
+            </span>
           </a>
         </div>
         <div className="contribution-steps [&_a]:text-[11px] [&_a]:text-brand [&_article]:mb-7.5 [&_article]:flex [&_article]:gap-4.5 max-[700px]:[&_article]:mb-6.25 [&_article_>_span]:pt-0.75 [&_article_>_span]:font-mono [&_article_>_span]:text-[11px] [&_article_>_span]:leading-[normal] [&_article_>_span]:font-normal [&_article_>_span]:text-[#9cab8a] [&_h3]:mb-2.25 [&_h3]:text-[15px] [&_p]:mb-2 [&_p]:text-[12px] [&_p]:text-muted">
@@ -147,7 +151,7 @@ export function Ecosystem() {
                 target="_blank"
                 rel="noreferrer"
               >
-                {t('查看发布记录 ↗')}
+                {t('查看发布记录')} <Icon name="open-in-new" />
               </a>
             </div>
           </article>

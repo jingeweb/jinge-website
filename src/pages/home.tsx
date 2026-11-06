@@ -1,6 +1,7 @@
 import { t, vm } from 'jinge';
 
 import { Html } from '../components/html';
+import { Icon } from '../components/icon';
 import { setMeta } from '../data';
 import homeCode from '../generated/home-code.json';
 import { href } from '../i18n';
@@ -26,7 +27,7 @@ export function Home() {
             Jinge 4.2
             <span className="pill-line h-2.5 w-0.25 bg-line" />
             {t('用更少，表达更多')}
-            <span>↗</span>
+            <Icon name="arrow-outward" className="text-[12px]" />
           </a>
           <p className="eyebrow font-mono text-[10px] leading-[1.5] font-semibold tracking-[0.16em] text-muted">
             {t('一个小巧的前端界面框架')}
@@ -51,14 +52,14 @@ export function Home() {
               href={href('/guide/quick-start/')}
             >
               {t('开始使用')}
-              <span>↗</span>
+              <Icon name="arrow-outward" className="text-[15px]" />
             </a>
             <a
               className="button secondary inline-flex min-h-11.75 items-center justify-center gap-8 rounded-[7px] px-5.5 py-2.75 text-[13px] font-semibold whitespace-nowrap [&.primary]:border [&.primary]:border-solid [&.primary]:border-[#c7e95f] [&.primary]:bg-accent [&.primary]:text-[#293d20] [&.primary:hover]:[transform:translateY(-2px)] [&.primary:hover]:bg-[#c4ed50] [&.secondary]:border [&.secondary]:border-solid [&.secondary]:border-line [&.secondary]:bg-surface [&.secondary]:text-ink [&.secondary:hover]:bg-subtle"
               href={href('/examples/')}
             >
               {t('探索示例')}
-              <span>→</span>
+              <Icon name="arrow-forward" className="text-[15px]" />
             </a>
           </div>
           <button
@@ -150,7 +151,7 @@ export function Home() {
         <div className="feature-grid mt-10.25 grid grid-cols-3 gap-11 max-[1150px]:gap-7.5 max-[700px]:mt-7 max-[700px]:grid-cols-1 max-[700px]:gap-6.5 max-[700px]:[&_.text-link]:col-2 max-[700px]:[&_.text-link]:text-[11px] [&_article]:border-t [&_article]:border-solid [&_article]:border-t-line [&_article]:pt-6.25 max-[700px]:[&_article]:grid max-[700px]:[&_article]:grid-cols-[40px_1fr] max-[700px]:[&_article]:gap-[0_18px] max-[700px]:[&_article]:pt-5 [&_h3]:mb-3.5 [&_h3]:text-[19px] [&_h3]:leading-[1.6] [&_h3]:tracking-[-0.3px] max-[700px]:[&_h3]:text-[18px] max-[700px]:[&_h3]:leading-[1.6] max-[700px]:[&_h3_br]:hidden [&_p]:mb-5.75 [&_p]:max-w-77.5 [&_p]:text-[12px] [&_p]:leading-[1.9] [&_p]:text-muted max-[700px]:[&_p]:mb-4 max-[700px]:[&_p]:max-w-full max-[700px]:[&_p]:text-[12px]">
           <article>
             <span className="feature-icon mb-5 grid h-9.25 w-9.25 place-items-center rounded-lg border border-solid border-line bg-surface font-mono text-[15px] leading-[normal] font-normal text-[#678947] max-[700px]:[grid-row:1_/_4] max-[700px]:mt-1">
-              {'</>'}
+              <Icon name="code" className="text-[18px]" />
             </span>
             <h3>
               {t('你的 TypeScript，')}
@@ -165,12 +166,12 @@ export function Home() {
               href={href('/guide/components/')}
             >
               {t('认识组件')}
-              <span>→</span>
+              <Icon name="arrow-forward" className="text-[13px]" />
             </a>
           </article>
           <article>
             <span className="feature-icon mb-5 grid h-9.25 w-9.25 place-items-center rounded-lg border border-solid border-line bg-surface font-mono text-[15px] leading-[normal] font-normal text-[#678947] max-[700px]:[grid-row:1_/_4] max-[700px]:mt-1">
-              ↗
+              <Icon name="bolt" className="text-[18px]" />
             </span>
             <h3>
               {t('数据变了，')}
@@ -185,12 +186,12 @@ export function Home() {
               href={href('/guide/reactivity/')}
             >
               {t('理解响应式')}
-              <span>→</span>
+              <Icon name="arrow-forward" className="text-[13px]" />
             </a>
           </article>
           <article>
             <span className="feature-icon mb-5 grid h-9.25 w-9.25 place-items-center rounded-lg border border-solid border-line bg-surface font-mono text-[15px] leading-[normal] font-normal text-[#678947] max-[700px]:[grid-row:1_/_4] max-[700px]:mt-1">
-              ✳
+              <Icon name="auto-awesome" className="text-[18px]" />
             </span>
             <h3>
               {t('小巧的核心，')}
@@ -205,7 +206,7 @@ export function Home() {
               href={href('/ecosystem/')}
             >
               {t('探索工具链')}
-              <span>→</span>
+              <Icon name="arrow-forward" className="text-[13px]" />
             </a>
           </article>
         </div>
@@ -226,7 +227,7 @@ export function Home() {
               href={href('/api/compiler/')}
             >
               {t('看看编译器做了什么')}
-              <span>→</span>
+              <Icon name="arrow-forward" className="text-[13px]" />
             </a>
           </div>
           <div
@@ -241,7 +242,9 @@ export function Home() {
                 <strong>{t('标准 TSX')}</strong>
                 <code>{'<p>{state.count}</p>'}</code>
               </div>
-              <span className="diagram-arrow text-center text-[20px] text-[#98ab81]">→</span>
+              <span className="diagram-arrow text-center text-[20px] text-[#98ab81]">
+                <Icon name="arrow-forward" />
+              </span>
               <div className="diagram-node compiler-node flex flex-col gap-2.25 rounded-lg border border-solid border-line bg-surface px-4 py-4.25 [box-shadow:0_3px_8px_#00000004] max-[950px]:p-3.25 max-[700px]:p-3.75 max-[370px]:p-2.75 [&_>_span:last-child:not(.node-index)]:text-[9px] [&_>_span:last-child:not(.node-index)]:text-muted max-[700px]:[&_>_span:last-child:not(.node-index)]:text-[8px] [&_code]:text-[9px] [&_code]:text-muted max-[950px]:[&_code]:text-[8px] max-[700px]:[&_code]:text-[9px] max-[370px]:[&_code]:text-[8px] [&_strong]:text-[14px] [&_strong]:font-semibold max-[950px]:[&_strong]:text-[12px] max-[700px]:[&_strong]:text-[13px] [&.compiler-node]:border-[#a9c979] [&.compiler-node]:bg-[color-mix(in_srgb,_var(--accent)_15%,_var(--surface))]">
                 <span className="node-index font-mono text-[8px] leading-[normal] font-normal tracking-[0.05em] text-muted">
                   02 / BUILD
@@ -252,7 +255,9 @@ export function Home() {
             </div>
             <div className="diagram-connector flex h-11.25 items-center justify-end gap-2 pr-8.75 text-[9px] text-muted [&_>_span:last-child]:ml-1.5 [&_>_span:last-child]:text-[24px]">
               <span>{t('编译建立连接')}</span>
-              <span>↓</span>
+              <span>
+                <Icon name="arrow-downward" />
+              </span>
             </div>
             <div className="diagram-bottom flex items-center justify-between gap-2.5">
               <div className="diagram-state grid grid-cols-[7px_1fr] items-center gap-1.75 rounded-[7px] border border-dashed border-[#9caf84] bg-surface px-3.5 py-3 max-[950px]:p-2.5 max-[700px]:p-3 max-[370px]:p-2.25 [&_code]:col-2 [&_code]:text-[9px] [&_code]:text-muted [&_strong]:text-[12px] [&_strong]:font-[550] max-[950px]:[&_strong]:text-[11px] max-[700px]:[&_strong]:text-[11px]">
@@ -261,7 +266,8 @@ export function Home() {
                 <code>state.count++</code>
               </div>
               <span className="update-wire text-[9px] whitespace-nowrap text-muted max-[950px]:text-[8px] max-[700px]:text-[8px] max-[370px]:text-[7px]">
-                {t('通知更新 →')}
+                {t('通知更新')}
+                <Icon name="arrow-forward" className="ml-1" />
               </span>
               <div className="diagram-dom flex flex-col gap-1.25 rounded-lg border border-solid border-line bg-surface px-5 py-3 max-[950px]:px-2.75 max-[700px]:px-4.25 max-[700px]:py-3 max-[370px]:p-2.25 [&_strong]:text-[13px] [&_strong]:font-[550]">
                 <span className="node-index font-mono text-[8px] leading-[normal] font-normal tracking-[0.05em] text-muted">
@@ -287,7 +293,7 @@ export function Home() {
             href={href('/examples/')}
           >
             {t('查看全部示例')}
-            <span>↗</span>
+            <Icon name="arrow-outward" className="text-[15px]" />
           </a>
         </div>
         <div className="example-preview-grid mt-7.5 grid grid-cols-3 gap-5.5 max-[950px]:gap-4 max-[700px]:mt-6 max-[700px]:grid-cols-1 max-[700px]:gap-4.5">
@@ -301,7 +307,9 @@ export function Home() {
                 Build something small.<span>▏</span>
               </div>
               <div className="mini-check flex items-center gap-2 text-[10px] [&_i]:grid [&_i]:h-3.5 [&_i]:w-3.5 [&_i]:place-items-center [&_i]:rounded-[3px] [&_i]:bg-[#d3eaa7] [&_i]:text-[9px] [&_i]:not-italic">
-                <i>✓</i>
+                <i>
+                  <Icon name="check" className="text-[10px]" />
+                </i>
                 {t('让数据与输入保持同步')}
               </div>
             </div>
@@ -310,7 +318,7 @@ export function Home() {
                 <small>01 / BASICS</small>
                 <strong>{t('表单与输入')}</strong>
               </span>
-              <span>↗</span>
+              <Icon name="arrow-outward" className="text-[17px]" />
             </div>
           </a>
           <a
@@ -322,7 +330,9 @@ export function Home() {
                 <span>HEADER</span>
                 <b>{t('一个卡片，无限组合。')}</b>
                 <span>CONTENT SLOT</span>
-                <i>FOOTER ↗</i>
+                <i>
+                  FOOTER <Icon name="arrow-outward" className="text-[7px]" />
+                </i>
               </div>
             </div>
             <div className="preview-card-info flex items-center justify-between px-5.25 py-4.5 max-[700px]:px-5.5 max-[700px]:py-4 [&_>_span:last-child]:text-[17px] [&_>_span:last-child]:text-[#859578] [&_small]:mb-1.5 [&_small]:block [&_small]:font-mono [&_small]:text-[8px] [&_small]:leading-[normal] [&_small]:font-normal [&_small]:tracking-[0.08em] [&_small]:text-muted [&_strong]:text-[13px] [&_strong]:font-[550]">
@@ -330,7 +340,7 @@ export function Home() {
                 <small>02 / COMPONENTS</small>
                 <strong>{t('组件与插槽')}</strong>
               </span>
-              <span>↗</span>
+              <Icon name="arrow-outward" className="text-[17px]" />
             </div>
           </a>
           <a
@@ -358,7 +368,7 @@ export function Home() {
                 <small>03 / APPLICATIONS</small>
                 <strong>{t('路由与页面')}</strong>
               </span>
-              <span>↗</span>
+              <Icon name="arrow-outward" className="text-[17px]" />
             </div>
           </a>
         </div>
@@ -382,13 +392,13 @@ export function Home() {
             href={href('/guide/quick-start/')}
           >
             {t('开始构建')}
-            <span>↗</span>
+            <Icon name="arrow-outward" className="text-[15px]" />
           </a>
           <a
             className="quiet-link text-[12px] text-muted hover:text-ink"
             href={href('/guide/from-vue-react/')}
           >
-            {t('熟悉 Vue / React？从这里出发 →')}
+            {t('熟悉 Vue / React？从这里出发')} <Icon name="arrow-forward" />
           </a>
         </div>
         <span

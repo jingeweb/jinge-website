@@ -48,13 +48,14 @@ const router = createRouter({
 });
 
 /**
- * One wrapper per locale. `Dynamic` swaps between them when the language changes, which re-creates
- * the shell and therefore every link, page and title in the new language without a page reload.
+ * One wrapper per locale for the routed content only. Header and footer stay mounted while the
+ * page body is re-created (their links follow `language.current` reactively), so the language
+ * `<select>` survives the switch and its native picker closes normally on mobile.
  */
-const shells: Record<string, FC> = {
-  'zh-CN': () => <Shell />,
-  'zh-TW': () => <Shell />,
-  en: () => <Shell />,
+const views: Record<string, FC> = {
+  'zh-CN': () => <RouterView />,
+  'zh-TW': () => <RouterView />,
+  en: () => <RouterView />,
 };
 
 /**
@@ -82,7 +83,7 @@ function LocaleLayout() {
   }
   sync();
   watch(params, 'locale', sync);
-  return <Dynamic fc={shells[language.current]} />;
+  return <Shell />;
 }
 
 /** A path without a locale segment (manual `pushState`, stale link) still needs the shell. */
@@ -166,7 +167,7 @@ function Shell() {
       </a>
       <Header />
       <div className="flex-1">
-        <RouterView />
+        <Dynamic fc={views[language.current]} />
       </div>
       <Footer />
       <div

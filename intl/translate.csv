@@ -9,36 +9,37 @@ GVk0zn,src/components/header.tsx,当前网站由 AI 使用 Jinge 构建,当前�
 Reqhgr,src/components/header.tsx,生态,生态,生態,Ecosystem
 S2gEEl,src/components/header.tsx,Jinge 首页,Jinge 首页,Jinge 首頁,Jinge home
 TnBzeC,src/components/header.tsx,移动端导航,移动端导航,移動端導航,Mobile navigation
-WpBk1h,src/components/header.tsx,语言,语言,語言,Language
 wDqNy1,src/components/header.tsx,示例,示例,範例,Examples
 wkQdAF,src/components/header.tsx,主导航,主导航,主導航,Main navigation
+WpBk1h,src/components/language-menu.tsx,语言,语言,語言,Language
 0oRJzo,src/main.tsx,无法访问剪贴板，请选中文本复制,无法访问剪贴板，请选中文本复制,無法訪問剪貼簿，請選中文本複製,Clipboard unavailable. Select the text to copy it.
 INz9EJ,src/main.tsx,跳到主要内容,跳到主要内容,跳到主要內容,Skip to main content
 qjuNEE,src/main.tsx,已复制到剪贴板,已复制到剪贴板,已複製到剪貼簿,Copied to clipboard
 2NqxnL,src/pages/document.tsx,这个页面，,这个页面，,這個頁面，,This page 
 469NQh,src/pages/document.tsx,暂时没有连接。,暂时没有连接。,暫時沒有連線。,is not connected yet.
+CD8c8b,src/pages/document.tsx,下一篇,下一篇,下一篇,Next
+CZTuSc,src/pages/document.tsx,在 GitHub 上查看,在 GitHub 上查看,在 GitHub 上檢視,View on GitHub
 GFF7Qn,src/pages/document.tsx,相邻文档,相邻文档,相鄰文件,Adjacent documents
 Gdq8gm,src/pages/document.tsx,本页内容,本页内容,本頁內容,On this page
 Ghj2UA,src/pages/document.tsx,文档目录,文档目录,文件目錄,Documentation menu
 IRqxQP,src/pages/document.tsx,API 参考,API 参考,API 參考,API reference
-NIOZ1D,src/pages/document.tsx,浏览示例 ↗,浏览示例 ↗,瀏覽範例 ↗,Browse examples ↗
+KeAKjR,src/pages/document.tsx,编辑此页,编辑此页,編輯此頁,Edit this page
 NLS2l4,src/pages/document.tsx,文档,文档,文件,Documentation
-PgUxZ8,src/pages/document.tsx,编辑此页 ↗,编辑此页 ↗,編輯此頁 ↗,Edit this page ↗
 SUoQGk,src/pages/document.tsx,文档导航,文档导航,文件導航,Documentation navigation
 VWc2ze,src/pages/document.tsx,可能是链接发生了变化，也可能是一个小小的拼写错误。,可能是链接发生了变化，也可能是一个小小的拼写错误。,可能是連結發生了變化，也可能是一個小小的拼寫錯誤。,"The link may have changed, or there may be a small typo."
 bpKK5s,src/pages/document.tsx,页面未找到,页面未找到,頁面未找到,Page not found
 d3TQcn,src/pages/document.tsx,基于 Jinge 4.2,基于 Jinge 4.2,基於 Jinge 4.2,Based on Jinge 4.2
-lU0sbs,src/pages/document.tsx,返回首页 ↗,返回首页 ↗,返回首頁 ↗,Back home ↗
+e+VcOA,src/pages/document.tsx,返回首页,返回首页,返回首頁,Back home
+jYslF4,src/pages/document.tsx,打开交互示例,打开交互示例,開啟互動示例,Open interactive examples
 lcv5Y7,src/pages/document.tsx,此文档不存在。请从目录选择一篇文档。,此文档不存在。请从目录选择一篇文档。,此文件不存在。請從目錄選擇一篇文件,This document does not exist. Pick one from the table of contents.
 lpx5pE,src/pages/document.tsx,开发指南,开发指南,開發指南,Developer guide
-p+e2dL,src/pages/document.tsx,← 上一篇,← 上一篇,← 上一篇,← Previous
-s6FTR9,src/pages/document.tsx,下一篇 →,下一篇 →,下一篇 →,Next →
-sfY7ac,src/pages/document.tsx,打开交互示例 ↗,打开交互示例 ↗,開啟互動示例 ↗,Open interactive examples ↗
+oYRIPR,src/pages/document.tsx,浏览示例,浏览示例,瀏覽範例,Browse examples
+udtnTl,src/pages/document.tsx,上一篇,上一篇,上一篇,Previous
 wJsX7Y,src/pages/document.tsx,此路径不存在，请返回首页或从导航选择页面。,此路径不存在，请返回首页或从导航选择页面。,此路徑不存在，請返回首頁或從導航選擇頁面,This path does not exist. Return to the home page or pick a page from the navigation.
 yJgMqX,src/pages/document.tsx,边看边试,边看边试,邊看邊試,Read and experiment
-zgWBKX,src/pages/document.tsx,在 GitHub 上查看 ↗,在 GitHub 上查看 ↗,在 GitHub 上檢視 ↗,View on GitHub ↗
 0zBku2,src/pages/ecosystem.tsx,完善文档,完善文档,完善文件,Improve the docs
 4bE/9C,src/pages/ecosystem.tsx,一起把细节，,一起把细节，,一起把細節，,Make the details 
+5RzNqJ,src/pages/ecosystem.tsx,查看发布记录,查看发布记录,檢視釋出記錄,View releases
 6BwZMh,src/pages/ecosystem.tsx,报告问题,报告问题,報告問題,Report an issue
 6tUYHZ,src/pages/ecosystem.tsx,跟进版本,跟进版本,跟進版本,Follow releases
 6tZHVy,src/pages/ecosystem.tsx,Jinge 由 Yuhang Ge 创建。运行时与编译器当前使用 AGPL-3.0，路由与示例包声明为 ISC；具体以各仓库 LICENSE 与包元数据为准。,Jinge 由 Yuhang Ge 创建。运行时与编译器当前使用 AGPL-3.0，路由与示例包声明为 ISC；具体以各仓库 LICENSE 与包元数据为准。,Jinge 由 Yuhang Ge 建立。執行時與編譯器當前使用 AGPL-3.0，路由與示例包宣告為 ISC；具體以各倉庫 LICENSE 與包後設資料為準。,Jinge was created by Yuhang Ge. The runtime and compiler currently use AGPL-3.0; the router and example packages declare ISC. Refer to each repository’s LICENSE and package metadata.
@@ -47,10 +48,9 @@ AGlDFP,src/pages/ecosystem.tsx,生态与关于,生态与关于,生態與關於,E
 GG99fw,src/pages/ecosystem.tsx,了解 Jinge 的运行时、编译器、路由、组件库与开源贡献。,了解 Jinge 的运行时、编译器、路由、组件库与开源贡献。,瞭解 Jinge 的執行時、編譯器、路由、元件庫與開源貢獻。,"Understand the Jinge runtime, compiler, router, component library, and open-source contributions."
 KwZFGu,src/pages/ecosystem.tsx,文档页底部可以直接进入编辑。欢迎补充示例、修正说明。,文档页底部可以直接进入编辑。欢迎补充示例、修正说明。,文件頁底部可以直接進入編輯。歡迎補充示例、修正說明。,Use the edit link at the bottom of a document. Examples and corrections are welcome.
 NsOQGe,src/pages/ecosystem.tsx,本官网使用 Jinge 构建，静态页面由 GitHub Pages 托管。,本官网使用 Jinge 构建，静态页面由 GitHub Pages 托管。,本官網使用 Jinge 構建，靜態頁面由 GitHub Pages 託管。,This website is built with Jinge and hosted as static pages on GitHub Pages.
-T+O+Iq,src/pages/ecosystem.tsx,参与贡献 ↗,参与贡献 ↗,參與貢獻 ↗,Contribute ↗
-X03e8I,src/pages/ecosystem.tsx,阅读文档 →,阅读文档 →,閱讀文件 →,Read the docs →
+Pvm7EA,src/pages/ecosystem.tsx,阅读文档,阅读文档,閱讀文件,Read the docs
+SObAz8,src/pages/ecosystem.tsx,参与贡献,参与贡献,參與貢獻,Contribute
 Z1lEn6,src/pages/ecosystem.tsx,轻量 SPA 路由。嵌套布局、响应式参数、query 与导航，让页面自然连接。,轻量 SPA 路由。嵌套布局、响应式参数、query 与导航，让页面自然连接。,輕量 SPA 路由。巢狀佈局、響應式引數、query 與導航，讓頁面自然連線。,"Lightweight SPA routing. Connect pages with nested layouts, reactive parameters, query strings, and navigation."
-bfo5RK,src/pages/ecosystem.tsx,查看发布记录 ↗,查看发布记录 ↗,檢視釋出記錄 ↗,View releases ↗
 fIA0ow,src/pages/ecosystem.tsx,在 GitHub 查看 {name},在 GitHub 查看 {name},在 GitHub 檢視 {name},View {name} on GitHub
 gxJKhL,src/pages/ecosystem.tsx,面向 PC 中台的 Ant Design 风格组件库。表单、表格、弹层等常用界面，沿用统一的交互与视觉。,面向 PC 中台的 Ant Design 风格组件库。表单、表格、弹层等常用界面，沿用统一的交互与视觉。,面向 PC 中台的 Ant Design 風格元件庫。表單、表格、彈窗等常用介面，沿用統一的互動與視覺。,"An Ant Design-style component library for PC admin applications. Forms, tables, and dialogs share one interaction and visual language."
 jSYzIz,src/pages/ecosystem.tsx,每个部分各司其职，一起构成 Jinge 的开发体验。,每个部分各司其职，一起构成 Jinge 的开发体验。,每個部分各司其職，一起構成 Jinge 的開發體驗。,"Each piece has a clear role. Together, they form the Jinge development experience."
@@ -65,16 +65,16 @@ yZEaLS,src/pages/ecosystem.tsx,一起生长,一起生长,一起生長,growing to
 /eOJSl,src/pages/examples.tsx,预览使用真实 Jinge 组件，在独立页面中运行。源码与构建使用同一份文件。,预览使用真实 Jinge 组件，在独立页面中运行。源码与构建使用同一份文件。,預覽使用真實 Jinge 元件，在獨立頁面中執行。原始碼與構建使用同一份檔案。,Real Jinge components run in an isolated page. The displayed source is the same file used by the build.
 2JLY0Y,src/pages/examples.tsx,请选择其他示例。,请选择其他示例。,請選擇其他示例。,Please choose another example.
 2R1xer,src/pages/examples.tsx,从一个例子开始,从一个例子开始,從一個例子開始,Start with an example
+2trE+f,src/pages/examples.tsx,阅读相关指南,阅读相关指南,閱讀相關指南,Read the related guide
 4+gzSw,src/pages/examples.tsx,并排查看,并排查看,並排檢視,Side by side
-4Iu1MJ,src/pages/examples.tsx,跟着快速开始搭建你的第一个应用 →,跟着快速开始搭建你的第一个应用 →,跟著快速開始搭建你的第一個應用 →,Build your first application with Quick start →
+4V2TIz,src/pages/examples.tsx,GitHub 源码,GitHub 源码,GitHub 原始碼,Source on GitHub
 5PZfqp,src/pages/examples.tsx,没有找到这个示例,没有找到这个示例,沒有找到這個示例,This example could not be found
 6s1RSp,src/pages/examples.tsx,还没有找到匹配的示例。,还没有找到匹配的示例。,還沒有找到匹配的示例。,No matching examples yet.
 7/BBEZ,src/pages/examples.tsx,运行预览,运行预览,執行預覽,Live preview
 7wofGo,src/pages/examples.tsx,应用,应用,應用,Applications
-9Srops,src/pages/examples.tsx,阅读相关指南 →,阅读相关指南 →,閱讀相關指南 →,Read the related guide →
-A9CU2u,src/pages/examples.tsx,← 全部示例,← 全部示例,← 全部示例,← All examples
+9D+dZ9,src/pages/examples.tsx,跟着快速开始搭建你的第一个应用,跟着快速开始搭建你的第一个应用,跟著快速開始搭建你的第一個應用,Build your first application with Quick start
+9FYJjG,src/pages/examples.tsx,返回示例列表,返回示例列表,返回示例列表,Back to examples
 AW1/Km,src/pages/examples.tsx,查看方式,查看方式,檢視方式,View mode
-Au3izh,src/pages/examples.tsx,GitHub 源码 ↗,GitHub 源码 ↗,GitHub 原始碼 ↗,Source on GitHub ↗
 KYNqYE,src/pages/examples.tsx,示例源码,示例源码,示例原始碼,Example source
 KuprSZ,src/pages/examples.tsx,示例分类,示例分类,示例分類,Example categories
 OZ/9Cb,src/pages/examples.tsx,↺ 重新加载,↺ 重新加载,↺ 重新載入,↺ Reload
@@ -88,10 +88,10 @@ aD84Hb,src/pages/examples.tsx,想从零开始？,想从零开始？,想從零開
 aUa7Ww,src/pages/examples.tsx,源码,源码,原始碼,Source
 aZzRtP,src/pages/examples.tsx,基础,基础,基礎,Basics
 dGBGbt,src/pages/examples.tsx,全部,全部,全部,All
-h5r685,src/pages/examples.tsx,返回示例列表 →,返回示例列表 →,返回示例列表 →,Back to examples →
 h8tCc7,src/pages/examples.tsx,挑一个感兴趣的主题，动手试试。,挑一个感兴趣的主题，动手试试。,挑一個感興趣的主題，動手試試。,Pick a topic and try it yourself.
 jNb1Up,src/pages/examples.tsx,清除筛选,清除筛选,清除篩選,Clear filters
 kVIHt6,src/pages/examples.tsx,示例未找到,示例未找到,示例未找到,Example not found
+lpeSKx,src/pages/examples.tsx,全部示例,全部示例,全部示例,All examples
 nttcgi,src/pages/examples.tsx,进阶,进阶,進階,Advanced
 o4XYKY,src/pages/examples.tsx,交互示例,交互示例,互動範例,Interactive examples
 qUKj7E,src/pages/examples.tsx,复制,复制,複製,Copy
@@ -120,8 +120,8 @@ EcYn87,src/pages/home.tsx,可以点击的预览，和它背后的每一行代码
 ErwZpp,src/pages/home.tsx,从表达，,从表达，,從表達，,From an expression 
 Gwx43Q,src/pages/home.tsx,把复杂的转换交给编译器，把清晰的代码留给你。,把复杂的转换交给编译器，把清晰的代码留给你。,把複雜的轉換交給編譯器，把清晰的程式碼留給你。,Let the compiler handle the transformation. Keep your code clear.
 HuoTDE,src/pages/home.tsx,重置计数器,重置计数器,重置計數器,Reset counter
+IqzpGI,src/pages/home.tsx,通知更新,通知更新,通知更新,Notify update
 JNWOg/,src/pages/home.tsx,写得自然，运行轻巧。,写得自然，运行轻巧。,寫得自然，執行輕巧。,Natural to write. Light to run.
-K3PPvV,src/pages/home.tsx,熟悉 Vue / React？从这里出发 →,熟悉 Vue / React？从这里出发 →,熟悉 Vue / React？從這裡出發 →,Coming from Vue / React? Start here →
 Nuxutq,src/pages/home.tsx,路由与页面,路由与页面,路由與頁面,Routes and pages
 O42eny,src/pages/home.tsx,直接更新,直接更新,直接更新,Direct updates
 O7RtHO,src/pages/home.tsx,用标准 TSX，构建轻巧的响应式应用,用标准 TSX，构建轻巧的响应式应用,用標準 TSX，構建輕巧的響應式應用,Standard TSX for lightweight reactive applications
@@ -138,7 +138,7 @@ afFb6B,src/pages/home.tsx,让数据与输入保持同步,让数据与输入保�
 afSLPs,src/pages/home.tsx,DOM 操作 + 数据监听,DOM 操作 + 数据监听,DOM 操作 + 資料監聽,DOM operations + subscriptions
 btYRVs,src/pages/home.tsx,用 vm() 描述状态，直接修改属性。编译器连接数据与 DOM，让响应式更新自然发生。,用 vm() 描述状态，直接修改属性。编译器连接数据与 DOM，让响应式更新自然发生。,用 vm() 描述狀態，直接修改屬性。編譯器連線資料與 DOM，讓響應式更新自然發生。,Describe state with vm() and modify its properties. The compiler connects data to DOM for reactive updates.
 c9lsyS,src/pages/home.tsx,没有虚拟 DOM。模板在构建时转成 DOM 操作和数据监听，运行时沿着这条连接更新界面。,没有虚拟 DOM。模板在构建时转成 DOM 操作和数据监听，运行时沿着这条连接更新界面。,沒有虛擬 DOM。模板在構建時轉成 DOM 操作和資料監聽，執行時沿著這條連線更新介面。,No virtual DOM. Templates become DOM operations and subscriptions at build time. The runtime follows those connections to update the interface.
-cHKIC0,src/pages/home.tsx,通知更新 →,通知更新 →,通知更新 →,Notify update →
+cBG6/N,src/pages/home.tsx,熟悉 Vue / React？从这里出发,熟悉 Vue / React？从这里出发,熟悉 Vue / React？從這裡出發,Coming from Vue / React? Start here
 dgqfMn,src/pages/home.tsx,响应式数据,响应式数据,響應式資料,Reactive data
 doo1SB,src/pages/home.tsx,编译器,编译器,編譯器,Compiler
 e4HFFB,src/pages/home.tsx,组件与插槽,组件与插槽,元件與插槽,Components and slots

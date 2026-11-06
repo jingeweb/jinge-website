@@ -2,6 +2,7 @@ import { onUnmount, t, vm, watch } from 'jinge';
 import { useParams } from 'jinge-router';
 
 import { Html } from '../components/html';
+import { Icon } from '../components/icon';
 import { PagePending } from '../components/pending';
 import { ensureLoaded, setMeta, store, type Demo, type SourceFile } from '../data';
 import { currentLocale, href } from '../i18n';
@@ -68,7 +69,7 @@ function ExamplesPage() {
           ))}
         </div>
         <label className="examples-search flex min-w-52.5 items-center gap-2.25 rounded-md border border-solid border-line bg-surface px-2.75 py-1.25 focus-within:[outline:2px_solid_var(--accent-text)] focus-within:[outline-offset:2px] max-[700px]:w-full [&_input]:w-40 [&_input]:border-0 [&_input]:bg-transparent [&_input]:text-[11px] [&_input]:text-ink [&_input]:outline-none max-[700px]:[&_input]:min-h-6.25 max-[700px]:[&_input]:w-full [&_span]:text-[19px] [&_span]:leading-[1] [&_span]:text-muted">
-          <span>⌕</span>
+          <Icon name="search" className="text-[19px]" />
           <input
             aria-label={t('筛选示例')}
             placeholder={t('查找示例…')}
@@ -91,7 +92,15 @@ function ExamplesPage() {
               className={`demo-card-visual flex h-33 flex-col items-center justify-center gap-3 bg-[#edf3e7] [background-image:radial-gradient(#8c9c701a_1px,_transparent_1px)] [background-size:13px_13px] text-[#72855c] max-[700px]:h-26.25 [&_>_code]:text-[9px] [&_>_code]:tracking-[0.02em] max-[700px]:[&_>_code]:px-2.5 max-[700px]:[&_>_code]:text-center max-[700px]:[&_>_code]:text-[8px] max-[700px]:[&_>_code]:wrap-anywhere [&_>_span]:font-mono [&_>_span]:text-[30px] [&_>_span]:leading-[normal] [&_>_span]:font-normal [&_>_span]:tracking-[-3px] max-[700px]:[&_>_span]:text-[25px] [&.visual-advanced]:bg-[#edf0f5] [&.visual-advanced]:text-[#7585a2] [&.visual-app]:bg-[#f4efe5] [&.visual-app]:text-[#99866a] ${demo.category === t('基础') ? 'visual-basics' : demo.category === t('进阶') ? 'visual-advanced' : 'visual-app'}`}
             >
               <span>
-                {demo.category === t('基础') ? '</>' : demo.category === t('进阶') ? '{ }' : '↗'}
+                <Icon
+                  name={
+                    demo.category === t('基础')
+                      ? 'code'
+                      : demo.category === t('进阶')
+                        ? 'data-object'
+                        : 'arrow-outward'
+                  }
+                />
               </span>
               <code>{demo.id}</code>
             </div>
@@ -100,7 +109,7 @@ function ExamplesPage() {
                 <span className="category-tag rounded border border-solid border-line px-1.5 py-0.25 text-[9px] text-muted">
                   {demo.category}
                 </span>
-                <span>↗</span>
+                <Icon name="arrow-outward" className="text-[15px]" />
               </div>
               <h2>{demo.title}</h2>
               <p>{demo.desc}</p>
@@ -126,7 +135,9 @@ function ExamplesPage() {
       )}
       <div className="examples-bottom-note mt-8.75 flex gap-5 border-t border-solid border-t-line pt-6 text-[11px] text-muted max-[700px]:flex-col max-[700px]:gap-1 max-[700px]:text-[10px] [&_a]:text-brand">
         <span>{t('想从零开始？')}</span>
-        <a href={href('/guide/quick-start/')}>{t('跟着快速开始搭建你的第一个应用 →')}</a>
+        <a href={href('/guide/quick-start/')}>
+          {t('跟着快速开始搭建你的第一个应用')} <Icon name="arrow-forward" />
+        </a>
       </div>
     </main>
   );
@@ -192,7 +203,8 @@ function ExampleDetail() {
       className="example-detail page-width mx-auto w-[min(1240px,_calc(100%_-_96px))] pt-7.5 pb-16.25 max-[1150px]:w-[calc(100%_-_64px)] max-[700px]:w-[calc(100%_-_40px)] max-[700px]:pt-5 max-[700px]:pb-10 max-[370px]:w-[calc(100%_-_30px)]"
     >
       <a className="back-link text-[11px] text-muted" href={href('/examples/')}>
-        {t('← 全部示例')}
+        <Icon name="arrow-back" className="mr-1" />
+        {t('全部示例')}
       </a>
       {state.found ? (
         <>
@@ -210,7 +222,10 @@ function ExampleDetail() {
               target="_blank"
               rel="noreferrer"
             >
-              {t('GitHub 源码 ↗')}
+              <span className="inline-flex items-center gap-1.5">
+                {t('GitHub 源码')}
+                <Icon name="open-in-new" className="text-[12px]" />
+              </span>
             </a>
           </header>
           <div className="example-workbench overflow-hidden rounded-[9px] border border-solid border-line bg-surface">
@@ -269,7 +284,7 @@ function ExampleDetail() {
                     rel="noreferrer"
                     aria-label={t('在新窗口打开预览')}
                   >
-                    ↗
+                    <Icon name="open-in-new" />
                   </a>
                 </div>
                 <iframe
@@ -326,14 +341,16 @@ function ExampleDetail() {
                   : '/guide/introduction/',
               )}
             >
-              {t('阅读相关指南 →')}
+              {t('阅读相关指南')} <Icon name="arrow-forward" />
             </a>
           </div>
         </>
       ) : (
         <div className="empty-state px-5 py-15 text-center [&_h2]:text-[21px] [&_p]:text-[13px] [&_p]:text-muted">
           <h1>{t('没有找到这个示例')}</h1>
-          <a href={href('/examples/')}>{t('返回示例列表 →')}</a>
+          <a href={href('/examples/')}>
+            {t('返回示例列表')} <Icon name="arrow-forward" />
+          </a>
         </div>
       )}
     </main>

@@ -25,9 +25,12 @@ export const intlReady = intlInit({
   dictLoader: (target) => dicts[`../intl/${target}.tsx`]().then((mod) => mod.default),
 });
 
-/** The same path in the active locale: internal links always stay inside it. */
-export function href(path: string): string {
-  return localizePath(path, language.current);
+/**
+ * The same path in the active locale: internal links always stay inside it. Templates that must
+ * follow a language switch pass `language.current` explicitly, so the compiler watches it.
+ */
+export function href(path: string, target: Locale = language.current): string {
+  return localizePath(path, target);
 }
 
 /** Keeps the reader on the same heading when the document exists in the target locale. */

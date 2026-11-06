@@ -1,13 +1,14 @@
-import { onMount, t, vm, watch } from 'jinge';
+import { onMount, ref, t, vm, watch } from 'jinge';
 import { useParams } from 'jinge-router';
 
 import { Html } from '../components/html';
+import { Icon } from '../components/icon';
 import { PagePending } from '../components/pending';
 import { ensureLoaded, findPage, loadDocHtml, setMeta, store, type Page } from '../data';
 import { currentLocale, href } from '../i18n';
 
 /** Raw HTML body: kept out of `t()` so the i18n extractor does not treat it as rich text. */
-const missingHtml = '<p><a href="/guide/introduction/">返回指南 →</a></p>';
+const missingHtml = '<p><a href="/guide/introduction/">返回指南</a></p>';
 
 /** Built on demand: `t()` needs the dictionary, which is loaded before rendering. */
 const missingPage = (): Page => ({
@@ -24,6 +25,7 @@ const missingPage = (): Page => ({
 
 export function DocumentPage(props: { section: string }) {
   const params = useParams<{ slug: string }>();
+  const mobileNav = ref<HTMLDetailsElement>();
   const initial = findPage(props.section, params.slug) ?? missingPage();
   const state = vm({
     page: initial,
@@ -49,6 +51,8 @@ export function DocumentPage(props: { section: string }) {
     state.previous = index > 0 ? sectionPages[index - 1] : undefined;
     state.next = index >= 0 ? sectionPages[index + 1] : undefined;
     setMeta(state.page.title, state.page.description);
+    // The mobile table of contents overlays the article; close it once the route moves on.
+    if (mobileNav.value) mobileNav.value.open = false;
   }
   update();
   watch(params, 'slug', update);
@@ -79,7 +83,9 @@ export function DocumentPage(props: { section: string }) {
             : props.section === 'api'
               ? t('API 参考')
               : t('开发指南')}
-          <span>↗</span>
+          <span>
+            <Icon name="arrow-outward" />
+          </span>
         </a>
         {sections.map((section) => (
           <div
@@ -105,14 +111,21 @@ export function DocumentPage(props: { section: string }) {
           target="_blank"
           rel="noreferrer"
         >
-          {t('在 GitHub 上查看 ↗')}
+          {t('在 GitHub 上查看')} <Icon name="open-in-new" className="text-[11px]" />
         </a>
       </aside>
       <main
         id="main-content"
         className="doc-main min-w-0 [&_>_.eyebrow]:mb-3.25 [&_>_.eyebrow]:text-[9px] [&_>_h1]:mb-3.5 [&_>_h1]:text-[33px] [&_>_h1]:tracking-[-0.6px] max-[700px]:[&_>_h1]:text-[29px]"
       >
-        <details className="mobile-doc-nav hidden max-[700px]:mb-5.5 max-[700px]:block max-[700px]:border-b max-[700px]:border-solid max-[700px]:border-b-line max-[700px]:pb-3.5 max-[700px]:[&_a]:block max-[700px]:[&_a]:px-0 max-[700px]:[&_a]:py-1.25 max-[700px]:[&_a]:text-[12px] max-[700px]:[&_a]:text-muted max-[700px]:[&_a:first-of-type]:mt-3 max-[700px]:[&_summary]:cursor-pointer max-[700px]:[&_summary]:text-[12px] max-[700px]:[&_summary]:text-muted">
+        <details
+          ref={mobileNav}
+          on:click={(event) => {
+            if (mobileNav.value && event.target instanceof Element && event.target.closest('a'))
+              mobileNav.value.open = false;
+          }}
+          className="mobile-doc-nav hidden max-[700px]:mb-5.5 max-[700px]:block max-[700px]:border-b max-[700px]:border-solid max-[700px]:border-b-line max-[700px]:pb-3.5 max-[700px]:[&_a]:block max-[700px]:[&_a]:px-0 max-[700px]:[&_a]:py-1.25 max-[700px]:[&_a]:text-[12px] max-[700px]:[&_a]:text-muted max-[700px]:[&_a:first-of-type]:mt-3 max-[700px]:[&_summary]:cursor-pointer max-[700px]:[&_summary]:text-[12px] max-[700px]:[&_summary]:text-muted"
+        >
           <summary>{t('文档目录')}</summary>
           {sectionPages.map((page) => (
             <a key={page.id} href={href(page.path)}>
@@ -153,7 +166,7 @@ export function DocumentPage(props: { section: string }) {
             target="_blank"
             rel="noreferrer"
           >
-            {t('编辑此页 ↗')}
+            {t('编辑此页')} <Icon name="open-in-new" className="text-[11px]" />
           </a>
           <span>{t('基于 Jinge 4.2')}</span>
         </div>
@@ -163,7 +176,10 @@ export function DocumentPage(props: { section: string }) {
         >
           {state.previous ? (
             <a href={href(state.previous.path)}>
-              <small>{t('← 上一篇')}</small>
+              <small>
+                <Icon name="arrow-back" className="mr-1" />
+                {t('上一篇')}
+              </small>
               <strong>{state.previous.title}</strong>
             </a>
           ) : (
@@ -171,7 +187,10 @@ export function DocumentPage(props: { section: string }) {
           )}
           {state.next ? (
             <a href={href(state.next.path)} className="next">
-              <small>{t('下一篇 →')}</small>
+              <small>
+                {t('下一篇')}
+                <Icon name="arrow-forward" className="ml-1" />
+              </small>
               <strong>{state.next.title}</strong>
             </a>
           ) : (
@@ -191,7 +210,9 @@ export function DocumentPage(props: { section: string }) {
         ))}
         <div className="toc-help mt-6.75 border-t border-solid border-t-line pt-4.25 [&_>_a]:text-brand [&_>_span]:mb-1.25 [&_>_span]:block [&_>_span]:text-[9px] [&_>_span]:text-muted">
           <span>{t('边看边试')}</span>
-          <a href={href('/examples/')}>{t('打开交互示例 ↗')}</a>
+          <a href={href('/examples/')}>
+            {t('打开交互示例')} <Icon name="arrow-outward" className="text-[11px]" />
+          </a>
         </div>
       </aside>
     </div>
@@ -233,13 +254,19 @@ export function NotFound() {
           className="button primary inline-flex min-h-11.75 items-center justify-center gap-8 rounded-[7px] px-5.5 py-2.75 text-[13px] font-semibold whitespace-nowrap [&.primary]:border [&.primary]:border-solid [&.primary]:border-[#c7e95f] [&.primary]:bg-accent [&.primary]:text-[#293d20] [&.primary:hover]:[transform:translateY(-2px)] [&.primary:hover]:bg-[#c4ed50] [&.secondary]:border [&.secondary]:border-solid [&.secondary]:border-line [&.secondary]:bg-surface [&.secondary]:text-ink [&.secondary:hover]:bg-subtle"
           href={href('/')}
         >
-          {t('返回首页 ↗')}
+          <span className="inline-flex items-center gap-1.5">
+            {t('返回首页')}
+            <Icon name="arrow-outward" className="text-[13px]" />
+          </span>
         </a>
         <a
           className="button secondary inline-flex min-h-11.75 items-center justify-center gap-8 rounded-[7px] px-5.5 py-2.75 text-[13px] font-semibold whitespace-nowrap [&.primary]:border [&.primary]:border-solid [&.primary]:border-[#c7e95f] [&.primary]:bg-accent [&.primary]:text-[#293d20] [&.primary:hover]:[transform:translateY(-2px)] [&.primary:hover]:bg-[#c4ed50] [&.secondary]:border [&.secondary]:border-solid [&.secondary]:border-line [&.secondary]:bg-surface [&.secondary]:text-ink [&.secondary:hover]:bg-subtle"
           href={href('/examples/')}
         >
-          {t('浏览示例 ↗')}
+          <span className="inline-flex items-center gap-1.5">
+            {t('浏览示例')}
+            <Icon name="arrow-outward" className="text-[13px]" />
+          </span>
         </a>
       </div>
     </main>

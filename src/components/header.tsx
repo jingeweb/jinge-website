@@ -1,11 +1,11 @@
-import { onMount, ref, t, vm } from 'jinge';
-import { useNavigate } from 'jinge-router';
+import { t, vm } from 'jinge';
 
-import { currentLocale, href, language } from '../i18n';
+import { href, language } from '../i18n';
 import { stripLocale } from '../locale';
 import { prefetchRoute } from '../routes';
 import { ui, toggleTheme } from '../state';
-import { switchLocale } from '../switch-locale';
+import { Icon } from './icon';
+import { LanguageMenu } from './language-menu';
 
 function isSection(path: string, section: string) {
   return stripLocale(path).startsWith(section);
@@ -15,7 +15,7 @@ export function Logo() {
   return (
     <a
       className="logo inline-flex items-center gap-2.25 text-[27px] leading-[1] font-[750] tracking-[-1.3px] max-[760px]:text-[25px] [&_img]:h-7.25 [&_img]:w-7.25 max-[760px]:[&_img]:h-6.75 max-[760px]:[&_img]:w-6.75"
-      href={href('/')}
+      href={href('/', language.current)}
       aria-label={t('Jinge 首页')}
     >
       <img src="/favicon.svg" width="30" height="30" alt="" />
@@ -27,7 +27,6 @@ export function Logo() {
 }
 
 export function Header() {
-  const navigate = useNavigate();
   // Evaluated per mount: `t()` needs the dictionary, which is loaded before the first render.
   const links = vm([
     { href: '/guide/introduction/', section: '/guide', label: t('指南') },
@@ -36,16 +35,6 @@ export function Header() {
     { href: '/router/overview/', section: '/router', label: t('路由') },
     { href: '/ecosystem/', section: '/ecosystem', label: t('生态') },
   ]);
-  const languageSelect = ref<HTMLSelectElement>();
-  const syncLanguage = () => {
-    if (languageSelect.value) languageSelect.value.value = currentLocale();
-  };
-  onMount(() => {
-    // The shell is re-created on every language switch, but history may restore a stale value.
-    window.addEventListener('pageshow', syncLanguage);
-    requestAnimationFrame(syncLanguage);
-    return () => window.removeEventListener('pageshow', syncLanguage);
-  });
   return (
     <header className="site-header sticky top-0 z-30 border-b border-solid border-b-line bg-[color-mix(in_srgb,_var(--bg)_93%,_transparent)] [backdrop-filter:blur(20px)]">
       <div className="header-inner m-auto flex h-19 max-w-360 items-center gap-3 px-10.5 py-0 max-[1150px]:px-7.5 max-[760px]:h-15.75 max-[760px]:gap-2 max-[760px]:px-5 max-[370px]:px-3.75">
@@ -60,7 +49,7 @@ export function Header() {
           {links.map((link) => (
             <a
               key={link.section}
-              href={href(link.href)}
+              href={href(link.href, language.current)}
               className={isSection(ui.path, link.section) ? 'active' : ''}
               aria-current={isSection(ui.path, link.section) ? 'page' : undefined}
               on:mouseEnter={() => prefetchRoute(link.section)}
@@ -71,36 +60,13 @@ export function Header() {
           ))}
         </nav>
         <div className="header-actions ml-auto flex items-center gap-4.25 max-[950px]:gap-3 max-[760px]:gap-2.75">
-          <select
-            ref={languageSelect}
-            autoComplete="off"
-            className="language-select w-22 min-w-0 rounded-md border border-line bg-surface px-2 py-1 text-[11px] text-muted max-[760px]:w-20 max-[450px]:text-[10px]"
-            aria-label={t('语言')}
-            aria-busy={language.loading}
-            value={currentLocale()}
-            on:change={(event) => {
-              const select = event.target;
-              void switchLocale(select.value, navigate).then((ok) => {
-                if (!ok) select.value = currentLocale();
-              });
-            }}
-          >
-            <option value="zh-CN" lang="zh-CN">
-              简体中文
-            </option>
-            <option value="zh-TW" lang="zh-TW">
-              繁體中文
-            </option>
-            <option value="en" lang="en">
-              English
-            </option>
-          </select>
+          <LanguageMenu />
           <button
             className="icon-button theme-toggle inline-grid h-8 min-w-6.5 place-content-center bg-transparent p-0.5 text-[20px] text-muted hover:text-ink"
             on:click={toggleTheme}
             aria-label={ui.dark ? t('切换浅色主题') : t('切换深色主题')}
           >
-            {ui.dark ? '☀' : '☾'}
+            <Icon name={ui.dark ? 'light-mode' : 'dark-mode'} className="text-[20px]" />
           </button>
           <span className="header-divider h-4.5 w-0.25 bg-line max-[760px]:hidden" />
           <a
@@ -122,7 +88,7 @@ export function Header() {
               ui.menu = !ui.menu;
             }}
           >
-            {ui.menu ? '×' : '☰'}
+            <Icon name={ui.menu ? 'close' : 'menu'} className="text-[20px]" />
           </button>
         </div>
       </div>
@@ -132,9 +98,9 @@ export function Header() {
           aria-label={t('移动端导航')}
         >
           {links.map((link) => (
-            <a key={link.section} href={href(link.href)}>
+            <a key={link.section} href={href(link.href, language.current)}>
               {link.label}
-              <span>↗</span>
+              <Icon name="arrow-outward" className="text-[14px]" />
             </a>
           ))}
         </nav>
@@ -151,14 +117,14 @@ export function Footer() {
         <p>{t('一个小巧的前端界面框架')}</p>
       </div>
       <div className="footer-links ml-auto flex gap-6 text-[10px] text-muted max-[760px]:m-0 max-[760px]:flex-wrap max-[760px]:gap-4.75 max-[760px]:text-[10px] [&_a:hover]:text-ink">
-        <a href={href('/guide/quick-start/')}>{t('开始使用')}</a>
-        <a href={href('/examples/')}>{t('探索示例')}</a>
+        <a href={href('/guide/quick-start/', language.current)}>{t('开始使用')}</a>
+        <a href={href('/examples/', language.current)}>{t('探索示例')}</a>
         <a
           href={href('https://github.com/jingeweb/jinge/blob/master/LICENSE')}
           target="_blank"
           rel="noreferrer"
         >
-          AGPL-3.0 ↗
+          AGPL-3.0 <Icon name="open-in-new" className="text-[12px]" />
         </a>
       </div>
       <p className="footer-note mt-0 mr-0 mb-0 ml-5 text-[9px] text-muted max-[1150px]:ml-auto max-[950px]:mt-[-28px] max-[950px]:w-full max-[950px]:text-right max-[760px]:m-0 max-[760px]:text-left max-[760px]:text-[9px]">

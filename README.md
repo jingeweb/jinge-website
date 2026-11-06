@@ -29,6 +29,8 @@ Husky 的 pre-commit 执行 lint-staged，检查并格式化暂存的代码与�
 
 官网使用 Tailwind CSS 4，通过 `@tailwindcss/vite` 编译。布局、颜色、间距、交互状态与响应式样式写在 TSX 的 utility classes 中；语义类名保留用于定位组件与交互测试。
 
+图标统一使用 Google Material Symbols：`@iconify/tailwind4` 在构建时从本地 `@iconify-json/material-symbols` 生成 `icon-[material-symbols--name]` 工具类，产物内联 SVG 掩码，不依赖图标字体或 CDN；组件统一走 `src/components/icon.tsx` 的 `<Icon name="…" />`。
+
 `src/style.css` 负责 Tailwind 入口、主题变量、基础规则与 Markdown 排版。主题颜色通过 `@theme inline` 注册，`dark:` 对应现有的 `data-theme="dark"`。Markdown 与代码块的结构由构建脚本生成，统一使用 `@layer components` / `@apply` 管理排版。
 
 Tailwind 的扫描范围明确限定在官网组件、页面、入口和内容构建脚本，不扫描示例快照与生成目录。样式类名应以完整的静态字符串书写，动态切换时从完整类名中选择。Oxfmt 会根据 `src/style.css` 自动排序 Tailwind classes，也支持 `cx()`。
