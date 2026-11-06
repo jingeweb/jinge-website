@@ -2,7 +2,7 @@
 
 使用 Jinge 4.2、jinge-router 和 Rust 编译器构建的官方网站，目标域名为 **https://jinge.embjs.com**，通过 GitHub Pages 部署。
 
-包含简中、繁中、英语三个完整版本：每种语言有产品首页、23 篇指南/API/路由文档、19 个可运行示例、源码查看与本地全文搜索，支持明暗主题和移动端布局。Playground 的 Rspack / WASM 前置工作记录在 [TODO.md](TODO.md)。
+包含简中、繁中、英语三个完整版本：每种语言有产品首页、23 篇指南/API/路由文档、19 个可运行示例与源码查看，支持不刷新页面的语言切换、明暗主题和移动端布局。Playground 的 Rspack / WASM 前置工作记录在 [TODO.md](TODO.md)。
 
 ## 开发
 
@@ -37,13 +37,13 @@ Tailwind 的扫描范围明确限定在官网组件、页面、入口和内容�
 
 ## 目录与内容
 
-- `src/`：Jinge 页面、布局、全局搜索与主题。
+- `src/`：Jinge 页面、布局、语言切换与主题。
 - `content/guide`、`content/api`、`content/router`：简中 Markdown 文档；`content/zh-TW/` 与 `content/en/` 为完整的繁中、英文文档。均使用 title / description / group 元数据。
 - `intl/`：翻译源目录，见 [intl/readme.md](intl/readme.md)。`translate.csv` 管界面文案（`t()`，由 `intl-extract` 维护），`demos.csv` 管示例源码里的展示文本（由 `localizeSource` 套用）。两者都要提交。
 - `demos/manifest.json`：示例的标题、描述、分类，直接按语言存放。
-- `src/locale.ts`、`src/i18n.ts`：语言路径、`intlInit` 字典加载、语言切换与章节定位。
+- `src/locale.ts`、`src/i18n.ts`、`src/switch-locale.ts`：语言路径、`intlInit` 字典加载、不刷新页面的语言切换与章节定位。
 - `demos/`：从 jinge-demos 引入的源码快照与独立路由演示。来源和适配说明见 [demos/README.md](demos/README.md)。
-- `scripts/content.mjs`：编译 Markdown、Shiki 高亮、搜索数据、示例源码和示例预览入口。
+- `scripts/content.mjs`：编译 Markdown、Shiki 高亮、示例源码和示例预览入口。
 - `scripts/source-i18n.mjs`：校验文案完整性、生成繁中文案，并用 TypeScript AST 翻译示例的显示文本，保留标识符、导入与响应式绑定。
 - `scripts/intl.mjs`：跑 `intl-extract` → 填充翻译列 → `intl-compile`，产出 `intl/<locale>.tsx` 字典。
 - `scripts/verify-build.mjs`：检查单页入口、404 回退、示例预览与文档数据。
@@ -64,7 +64,7 @@ Tailwind 的扫描范围明确限定在官网组件、页面、入口和内容�
 
 三种语言都有前缀。`/` 不是内容页：入口在渲染前把「本地偏好 → `navigator.language` → 简体中文」算出的语言写回 URL（`replaceState`，不产生跳转）。首段不是已知语言时整段被丢弃，不会落进 404。
 
-页头的语言选择器在切换时保留当前页面与 query，并按章节顺序映射到对应语言的锚点。**只有手动切换才会写入 `localStorage`（键 `jinge-locale`）**；自动判断只读取、不写入。显式带前缀的 URL 永远优先。
+页头的语言选择器在切换时保留当前页面、滚动位置与 query，并按章节顺序映射到对应语言的锚点；切换在客户端完成，不重新加载页面。**只有手动切换才会写入 `localStorage`（键 `jinge-locale`）**；自动判断只读取、不写入。显式带前缀的 URL 永远优先。
 
 界面文案走 **jinge 框架自带的 i18n**：源码里写 `t('简中文案')`、带参数写 `t('你好，{name}！', { name })`。`intl/translate.csv` 是翻译的唯一来源并随仓库提交：`scripts/intl.mjs` 先跑 `intl-extract` 把新文案追加成空行，然后校验每个 key 的三种语言都非空（缺翻译直接构建失败），最后 `intl-compile` 生成 `intl/<locale>.tsx`，运行时由 `intlInit` 的 `dictLoader` 按需加载。**新增文案时在 CSV 的对应列填翻译即可**，不需要改代码。
 

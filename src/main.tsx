@@ -1,10 +1,10 @@
-import { bootstrap, onMount, onUnmount, t } from 'jinge';
-import { Router, RouterView, createRouter, useNavigate } from 'jinge-router';
+import { Dynamic, type FC, bootstrap, onMount, onUnmount, t, watch } from 'jinge';
+import { Router, RouterView, createRouter, useNavigate, useParams } from 'jinge-router';
 
 import { Footer, Header } from './components/header';
-import { Search } from './components/search';
-import { href, intlReady, locale } from './i18n';
-import { detectLocale, localePrefix, stripLocale } from './locale';
+import { PagePending } from './components/pending';
+import { currentLocale, href, intlReady, language, languagePath } from './i18n';
+import { detectLocale, isLocale, localizePath, stripLocale } from './locale';
 import { Home } from './pages/home';
 import { normalizePath, withTrailingSlash } from './path';
 import {
@@ -17,31 +17,86 @@ import {
   RouterRoute,
 } from './routes';
 import { copyText, ui } from './state';
+import { activateLocale, restoreScroll } from './switch-locale';
 
 // `style.css` is loaded by the static HTML shell with a render-blocking <link>. Importing it here
 // as well made the dev server emit a second, JS-injected copy of the same sheet, which repainted
 // the whole document after first paint.
 
+// The locale is a route segment, not the router base: that keeps navigation between languages
+// inside one router instance, so back/forward and in-place switching never reload the document.
 const router = createRouter({
-  baseHref: localePrefix(locale),
+  baseHref: import.meta.env.BASE_URL,
   routes: [
-    { path: '/', component: Home },
-    { path: '/guide/:slug', component: GuideRoute },
-    { path: '/api/:slug', component: ApiRoute },
-    { path: '/router/:slug', component: RouterRoute },
-    { path: '/examples', component: Examples },
-    { path: '/examples/:slug', component: ExampleRoute },
-    { path: '/ecosystem', component: Ecosystem },
-    { path: '/*', component: NotFound },
+    { path: '/', redirectTo: `/${language.current}/` },
+    {
+      path: '/:locale',
+      component: LocaleLayout,
+      children: [
+        { component: Home },
+        { path: '/guide/:slug', component: GuideRoute },
+        { path: '/api/:slug', component: ApiRoute },
+        { path: '/router/:slug', component: RouterRoute },
+        { path: '/examples', component: Examples },
+        { path: '/examples/:slug', component: ExampleRoute },
+        { path: '/ecosystem', component: Ecosystem },
+        { path: '/*', component: NotFound },
+      ],
+    },
+    { path: '/*', component: MissingLocale },
   ],
 });
+
+/**
+ * One wrapper per locale. `Dynamic` swaps between them when the language changes, which re-creates
+ * the shell and therefore every link, page and title in the new language without a page reload.
+ */
+const shells: Record<string, FC> = {
+  'zh-CN': () => <Shell />,
+  'zh-TW': () => <Shell />,
+  en: () => <Shell />,
+};
+
+/**
+ * Keeps the URL and the rendered language in sync. Switching languages swaps `language.current`
+ * (see switch-locale.ts); browser back/forward arrives here through the route param.
+ */
+function LocaleLayout() {
+  const params = useParams<{ locale: string }>();
+  const navigate = useNavigate();
+  function sync() {
+    const target = params.locale ?? '';
+    if (!isLocale(target)) {
+      navigate(languagePath(language.current), { replace: true });
+      return;
+    }
+    if (target === language.current) return;
+    const top = window.scrollY;
+    void activateLocale(target).then((ok) => {
+      if (!ok) {
+        navigate(languagePath(language.current), { replace: true });
+        return;
+      }
+      restoreScroll(top);
+    });
+  }
+  sync();
+  watch(params, 'locale', sync);
+  return <Dynamic fc={shells[language.current]} />;
+}
+
+/** A path without a locale segment (manual `pushState`, stale link) still needs the shell. */
+function MissingLocale() {
+  const navigate = useNavigate();
+  navigate(localizePath(location.pathname, currentLocale()), { replace: true });
+  return <PagePending />;
+}
 
 function Shell() {
   const navigate = useNavigate();
   function sync() {
     ui.path = location.pathname;
     ui.menu = false;
-    ui.search = false;
   }
   function onClick(event: MouseEvent) {
     if (!(event.target instanceof Element)) return;
@@ -68,12 +123,13 @@ function Shell() {
     if (
       url.origin !== location.origin ||
       stripLocale(url.pathname).startsWith('/preview/') ||
-      detectLocale(url.pathname) !== locale
+      detectLocale(url.pathname) !== currentLocale()
     )
       return;
     if (normalizePath(url.pathname) === normalizePath(location.pathname) && url.hash) return;
     event.preventDefault();
-    navigate(withTrailingSlash(stripLocale(url.pathname)) + url.search);
+    // `href()` already produced an absolute path with the locale prefix.
+    navigate(withTrailingSlash(url.pathname) + url.search);
     sync();
     window.scrollTo({ top: 0, behavior: 'instant' });
     requestAnimationFrame(() => {
@@ -87,14 +143,7 @@ function Shell() {
     });
   }
   function onKey(event: KeyboardEvent) {
-    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
-      event.preventDefault();
-      ui.search = !ui.search;
-    }
-    if (event.key === 'Escape') {
-      ui.search = false;
-      ui.menu = false;
-    }
+    if (event.key === 'Escape') ui.menu = false;
   }
   onMount(() => {
     document.addEventListener('click', onClick);
@@ -120,7 +169,6 @@ function Shell() {
         <RouterView />
       </div>
       <Footer />
-      {ui.search && <Search />}
       <div
         className={
           ui.notice
@@ -143,7 +191,7 @@ function Shell() {
 function App() {
   return (
     <Router router={router}>
-      <Shell />
+      <RouterView />
     </Router>
   );
 }

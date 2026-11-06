@@ -4,19 +4,18 @@ import { useParams } from 'jinge-router';
 import { Html } from '../components/html';
 import { PagePending } from '../components/pending';
 import { ensureLoaded, findPage, loadDocHtml, setMeta, store, type Page } from '../data';
-import { href, locale } from '../i18n';
-import { ui } from '../state';
+import { currentLocale, href } from '../i18n';
 
 /** Raw HTML body: kept out of `t()` so the i18n extractor does not treat it as rich text. */
 const missingHtml = '<p><a href="/guide/introduction/">返回指南 →</a></p>';
 
 /** Built on demand: `t()` needs the dictionary, which is loaded before rendering. */
 const missingPage = (): Page => ({
-  locale,
+  locale: currentLocale(),
   id: '',
   path: '/404.html',
   title: t('页面未找到'),
-  description: t('此文档不存在。请使用搜索，或从目录选择一篇文档。'),
+  description: t('此文档不存在。请从目录选择一篇文档。'),
   group: '404',
   toc: [],
   text: '',
@@ -43,7 +42,7 @@ export function DocumentPage(props: { section: string }) {
     state.page = page ?? missingPage();
     state.html = page ? '' : missingHtml;
     if (page)
-      void loadDocHtml(locale, page.id).then((data) => {
+      void loadDocHtml(currentLocale(), page.id).then((data) => {
         if (state.page.id === page.id) state.html = data.html;
       });
     const index = sectionPages.findIndex((page) => page.id === state.page.id);
@@ -214,7 +213,7 @@ export function RouterRoute() {
 }
 
 export function NotFound() {
-  setMeta(t('页面未找到'), t('此路径不存在，请返回首页或搜索文档。'));
+  setMeta(t('页面未找到'), t('此路径不存在，请返回首页或从导航选择页面。'));
   return (
     <main
       id="main-content"
@@ -236,14 +235,12 @@ export function NotFound() {
         >
           {t('返回首页 ↗')}
         </a>
-        <button
+        <a
           className="button secondary inline-flex min-h-11.75 items-center justify-center gap-8 rounded-[7px] px-5.5 py-2.75 text-[13px] font-semibold whitespace-nowrap [&.primary]:border [&.primary]:border-solid [&.primary]:border-[#c7e95f] [&.primary]:bg-accent [&.primary]:text-[#293d20] [&.primary:hover]:[transform:translateY(-2px)] [&.primary:hover]:bg-[#c4ed50] [&.secondary]:border [&.secondary]:border-solid [&.secondary]:border-line [&.secondary]:bg-surface [&.secondary]:text-ink [&.secondary:hover]:bg-subtle"
-          on:click={() => {
-            ui.search = true;
-          }}
+          href={href('/examples/')}
         >
-          {t('搜索文档')}
-        </button>
+          {t('浏览示例 ↗')}
+        </a>
       </div>
     </main>
   );

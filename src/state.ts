@@ -3,7 +3,6 @@ import { vm } from 'jinge';
 export const ui = vm({
   path: location.pathname,
   dark: document.documentElement.dataset.theme === 'dark',
-  search: false,
   menu: false,
   notice: '' as Notice,
 });

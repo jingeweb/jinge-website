@@ -10,28 +10,18 @@ Reqhgr,src/components/header.tsx,生态,生态,生態,Ecosystem
 S2gEEl,src/components/header.tsx,Jinge 首页,Jinge 首页,Jinge 首頁,Jinge home
 TnBzeC,src/components/header.tsx,移动端导航,移动端导航,移動端導航,Mobile navigation
 WpBk1h,src/components/header.tsx,语言,语言,語言,Language
+wDqNy1,src/components/header.tsx,示例,示例,範例,Examples
 wkQdAF,src/components/header.tsx,主导航,主导航,主導航,Main navigation
-4IWy88,src/components/search.tsx,输入关键词,输入关键词,輸入關鍵詞,Enter a search term
-P2kCp8,src/components/search.tsx,从这里开始,从这里开始,從這裡開始,Start here
-P79pnb,src/components/search.tsx,试试“响应式”“router”或“插槽”。,试试“响应式”“router”或“插槽”。,試試“響應式”“router”或“插槽”。,"Try “reactive”, “router”, or “slots”."
-PL5wT/,src/components/search.tsx,搜索结果 · {count},搜索结果 · {count},搜尋結果 · {count},Search results · {count}
-WSM+yw,src/components/search.tsx,本地全文搜索,本地全文搜索,本地全文搜尋,Local full-text search
-fC/LA9,src/components/search.tsx,↑ ↓ 切换结果 · Enter 打开,↑ ↓ 切换结果 · Enter 打开,↑ ↓ 切換結果 · Enter 開啟,↑ ↓ Select · Enter Open
-olI/Ce,src/components/search.tsx,没有找到相关内容,没有找到相关内容,沒有找到相關內容,No results found
-ur1GsC,src/components/search.tsx,搜索指南、API 和示例…,搜索指南、API 和示例…,搜尋指南、API 和示例…,"Search guides, APIs, and examples…"
-wDqNy1,src/components/search.tsx,示例,示例,範例,Examples
-zJFxZv,src/components/search.tsx,关闭搜索,关闭搜索,關閉搜尋,Close search
 0oRJzo,src/main.tsx,无法访问剪贴板，请选中文本复制,无法访问剪贴板，请选中文本复制,無法訪問剪貼簿，請選中文本複製,Clipboard unavailable. Select the text to copy it.
 INz9EJ,src/main.tsx,跳到主要内容,跳到主要内容,跳到主要內容,Skip to main content
 qjuNEE,src/main.tsx,已复制到剪贴板,已复制到剪贴板,已複製到剪貼簿,Copied to clipboard
-/70At1,src/pages/document.tsx,此路径不存在，请返回首页或搜索文档。,此路径不存在，请返回首页或搜索文档。,此路徑不存在，請返回首頁或搜尋文件。,This path does not exist. Return home or search the documentation.
 2NqxnL,src/pages/document.tsx,这个页面，,这个页面，,這個頁面，,This page 
 469NQh,src/pages/document.tsx,暂时没有连接。,暂时没有连接。,暫時沒有連線。,is not connected yet.
-9/jENq,src/pages/document.tsx,此文档不存在。请使用搜索，或从目录选择一篇文档。,此文档不存在。请使用搜索，或从目录选择一篇文档。,此文件不存在。請使用搜索，或從目錄選擇一篇文件。,This document does not exist. Search or choose a page from the navigation.
 GFF7Qn,src/pages/document.tsx,相邻文档,相邻文档,相鄰文件,Adjacent documents
 Gdq8gm,src/pages/document.tsx,本页内容,本页内容,本頁內容,On this page
 Ghj2UA,src/pages/document.tsx,文档目录,文档目录,文件目錄,Documentation menu
 IRqxQP,src/pages/document.tsx,API 参考,API 参考,API 參考,API reference
+NIOZ1D,src/pages/document.tsx,浏览示例 ↗,浏览示例 ↗,瀏覽範例 ↗,Browse examples ↗
 NLS2l4,src/pages/document.tsx,文档,文档,文件,Documentation
 PgUxZ8,src/pages/document.tsx,编辑此页 ↗,编辑此页 ↗,編輯此頁 ↗,Edit this page ↗
 SUoQGk,src/pages/document.tsx,文档导航,文档导航,文件導航,Documentation navigation
@@ -39,29 +29,30 @@ VWc2ze,src/pages/document.tsx,可能是链接发生了变化，也可能是一�
 bpKK5s,src/pages/document.tsx,页面未找到,页面未找到,頁面未找到,Page not found
 d3TQcn,src/pages/document.tsx,基于 Jinge 4.2,基于 Jinge 4.2,基於 Jinge 4.2,Based on Jinge 4.2
 lU0sbs,src/pages/document.tsx,返回首页 ↗,返回首页 ↗,返回首頁 ↗,Back home ↗
+lcv5Y7,src/pages/document.tsx,此文档不存在。请从目录选择一篇文档。,此文档不存在。请从目录选择一篇文档。,此文件不存在。請從目錄選擇一篇文件,This document does not exist. Pick one from the table of contents.
 lpx5pE,src/pages/document.tsx,开发指南,开发指南,開發指南,Developer guide
-n632UI,src/pages/document.tsx,搜索文档,搜索文档,搜尋文件,Search docs
 p+e2dL,src/pages/document.tsx,← 上一篇,← 上一篇,← 上一篇,← Previous
 s6FTR9,src/pages/document.tsx,下一篇 →,下一篇 →,下一篇 →,Next →
 sfY7ac,src/pages/document.tsx,打开交互示例 ↗,打开交互示例 ↗,開啟互動示例 ↗,Open interactive examples ↗
+wJsX7Y,src/pages/document.tsx,此路径不存在，请返回首页或从导航选择页面。,此路径不存在，请返回首页或从导航选择页面。,此路徑不存在，請返回首頁或從導航選擇頁面,This path does not exist. Return to the home page or pick a page from the navigation.
 yJgMqX,src/pages/document.tsx,边看边试,边看边试,邊看邊試,Read and experiment
 zgWBKX,src/pages/document.tsx,在 GitHub 上查看 ↗,在 GitHub 上查看 ↗,在 GitHub 上檢視 ↗,View on GitHub ↗
 0zBku2,src/pages/ecosystem.tsx,完善文档,完善文档,完善文件,Improve the docs
-3/WjZl,src/pages/ecosystem.tsx,了解 Jinge 的运行时、编译器、路由、示例与开源贡献。,了解 Jinge 的运行时、编译器、路由、示例与开源贡献。,瞭解 Jinge 的執行時、編譯器、路由、示例與開源貢獻。,"Discover the Jinge runtime, compiler, router, examples, and open-source contributions."
 4bE/9C,src/pages/ecosystem.tsx,一起把细节，,一起把细节，,一起把細節，,Make the details 
 6BwZMh,src/pages/ecosystem.tsx,报告问题,报告问题,報告問題,Report an issue
 6tUYHZ,src/pages/ecosystem.tsx,跟进版本,跟进版本,跟進版本,Follow releases
 6tZHVy,src/pages/ecosystem.tsx,Jinge 由 Yuhang Ge 创建。运行时与编译器当前使用 AGPL-3.0，路由与示例包声明为 ISC；具体以各仓库 LICENSE 与包元数据为准。,Jinge 由 Yuhang Ge 创建。运行时与编译器当前使用 AGPL-3.0，路由与示例包声明为 ISC；具体以各仓库 LICENSE 与包元数据为准。,Jinge 由 Yuhang Ge 建立。執行時與編譯器當前使用 AGPL-3.0，路由與示例包宣告為 ISC；具體以各倉庫 LICENSE 與包後設資料為準。,Jinge was created by Yuhang Ge. The runtime and compiler currently use AGPL-3.0; the router and example packages declare ISC. Refer to each repository’s LICENSE and package metadata.
 9GwwKG,src/pages/ecosystem.tsx,响应式 ViewModel、函数组件、DOM 更新、生命周期与内置国际化。界面背后，小巧的运行时。,响应式 ViewModel、函数组件、DOM 更新、生命周期与内置国际化。界面背后，小巧的运行时。,響應式 ViewModel、函式元件、DOM 更新、生命週期與內建國際化。介面背後，小巧的執行時。,"Reactive ViewModels, function components, DOM updates, lifecycle, and built-in internationalization. A small runtime behind your interface."
 AGlDFP,src/pages/ecosystem.tsx,生态与关于,生态与关于,生態與關於,Ecosystem and about
+GG99fw,src/pages/ecosystem.tsx,了解 Jinge 的运行时、编译器、路由、组件库与开源贡献。,了解 Jinge 的运行时、编译器、路由、组件库与开源贡献。,瞭解 Jinge 的執行時、編譯器、路由、元件庫與開源貢獻。,"Understand the Jinge runtime, compiler, router, component library, and open-source contributions."
 KwZFGu,src/pages/ecosystem.tsx,文档页底部可以直接进入编辑。欢迎补充示例、修正说明。,文档页底部可以直接进入编辑。欢迎补充示例、修正说明。,文件頁底部可以直接進入編輯。歡迎補充示例、修正說明。,Use the edit link at the bottom of a document. Examples and corrections are welcome.
 NsOQGe,src/pages/ecosystem.tsx,本官网使用 Jinge 构建，静态页面由 GitHub Pages 托管。,本官网使用 Jinge 构建，静态页面由 GitHub Pages 托管。,本官網使用 Jinge 構建，靜態頁面由 GitHub Pages 託管。,This website is built with Jinge and hosted as static pages on GitHub Pages.
 T+O+Iq,src/pages/ecosystem.tsx,参与贡献 ↗,参与贡献 ↗,參與貢獻 ↗,Contribute ↗
-VsFgwD,src/pages/ecosystem.tsx,从最小组件到 TodoMVC，涵盖表单、插槽、动画、国际化与第三方图表集成。,从最小组件到 TodoMVC，涵盖表单、插槽、动画、国际化与第三方图表集成。,從最小元件到 TodoMVC，涵蓋表單、插槽、動畫、國際化與第三方圖表整合。,"From a minimal component to TodoMVC: forms, slots, animation, internationalization, and third-party charts."
 X03e8I,src/pages/ecosystem.tsx,阅读文档 →,阅读文档 →,閱讀文件 →,Read the docs →
 Z1lEn6,src/pages/ecosystem.tsx,轻量 SPA 路由。嵌套布局、响应式参数、query 与导航，让页面自然连接。,轻量 SPA 路由。嵌套布局、响应式参数、query 与导航，让页面自然连接。,輕量 SPA 路由。巢狀佈局、響應式引數、query 與導航，讓頁面自然連線。,"Lightweight SPA routing. Connect pages with nested layouts, reactive parameters, query strings, and navigation."
 bfo5RK,src/pages/ecosystem.tsx,查看发布记录 ↗,查看发布记录 ↗,檢視釋出記錄 ↗,View releases ↗
 fIA0ow,src/pages/ecosystem.tsx,在 GitHub 查看 {name},在 GitHub 查看 {name},在 GitHub 檢視 {name},View {name} on GitHub
+gxJKhL,src/pages/ecosystem.tsx,面向 PC 中台的 Ant Design 风格组件库。表单、表格、弹层等常用界面，沿用统一的交互与视觉。,面向 PC 中台的 Ant Design 风格组件库。表单、表格、弹层等常用界面，沿用统一的交互与视觉。,面向 PC 中台的 Ant Design 風格元件庫。表單、表格、彈窗等常用介面，沿用統一的互動與視覺。,"An Ant Design-style component library for PC admin applications. Forms, tables, and dialogs share one interaction and visual language."
 jSYzIz,src/pages/ecosystem.tsx,每个部分各司其职，一起构成 Jinge 的开发体验。,每个部分各司其职，一起构成 Jinge 的开发体验。,每個部分各司其職，一起構成 Jinge 的開發體驗。,"Each piece has a clear role. Together, they form the Jinge development experience."
 krDIQt,src/pages/ecosystem.tsx,关于项目与许可,关于项目与许可,關於專案與許可,About the project and licenses
 mWXeKR,src/pages/ecosystem.tsx,基于 Rust 与 SWC，将标准 TSX 转为 DOM 操作和数据监听，提供 Vite 与国际化工具链。,基于 Rust 与 SWC，将标准 TSX 转为 DOM 操作和数据监听，提供 Vite 与国际化工具链。,基於 Rust 與 SWC，將標準 TSX 轉為 DOM 操作和資料監聽，提供 Vite 與國際化工具鏈。,"Built with Rust and SWC, it turns standard TSX into DOM operations and data subscriptions, with Vite and internationalization tooling."

@@ -2,7 +2,7 @@ import { vm } from 'jinge';
 
 import type { Locale } from './locale';
 
-import { locale } from './i18n';
+import { currentLocale } from './i18n';
 
 export interface Page {
   locale: Locale;
@@ -28,36 +28,58 @@ export interface SourceFile {
   code: string;
   html: string;
 }
-const datasets = import.meta.glob<{ pages: Page[]; demos: Demo[] }>('./generated/locales/*.json', {
+interface Dataset {
+  pages: Page[];
+  demos: Demo[];
+}
+const datasets = import.meta.glob<Dataset>('./generated/locales/*.json', {
   import: 'default',
 });
+/** Per-locale promises: switching back to a visited language reuses its dataset. */
+const pending = new Map<Locale, Promise<Dataset>>();
+export function loadDataset(target: Locale): Promise<Dataset> {
+  let request = pending.get(target);
+  if (!request) {
+    request = datasets[`./generated/locales/${target}.json`]();
+    pending.set(target, request);
+    void request.catch(() => pending.delete(target));
+  }
+  return request;
+}
 /**
  * The dataset is loaded after the application mounts, so a slow network never blocks the shell.
- * Components read it through `store`, and `ready` flips once the data is in place.
+ * Components read it through `store`, and `ready` flips once the data for their locale is in place.
  */
 export const store = vm({
   ready: false,
+  locale: '' as Locale | '',
   pages: [] as Page[],
   demos: [] as Demo[],
 });
+export function applyDataset(target: Locale, data: Dataset) {
+  store.pages = data.pages;
+  store.demos = data.demos;
+  store.locale = target;
+  store.ready = true;
+}
 /** Fetched on demand: only routes that read the dataset call this. */
-let loading: Promise<void> | undefined;
-export const ensureLoaded = () =>
-  (loading ??= datasets[`./generated/locales/${locale}.json`]().then((data) => {
-    store.pages = data.pages;
-    store.demos = data.demos;
-    store.ready = true;
-  }));
+export async function ensureLoaded() {
+  const target = currentLocale();
+  if (store.ready && store.locale === target) return;
+  const data = await loadDataset(target);
+  // A locale switch may have finished while this dataset was in flight.
+  if (currentLocale() === target) applyDataset(target, data);
+}
 /** Document bodies are split per page; only the page being rendered loads its own HTML. */
 const docs = import.meta.glob<{ html: string }>('./generated/docs/**/*.json', {
   import: 'default',
 });
-export const loadDocHtml = (target: string, id: string) =>
+export const loadDocHtml = (target: Locale, id: string) =>
   docs[`./generated/docs/${target}/${id}.json`]();
 export const findPage = (section: string, slug: string) =>
   store.pages.find((page) => page.id === `${section}/${slug}`);
 export function setMeta(title: string, description: string) {
-  document.documentElement.lang = locale;
+  document.documentElement.lang = currentLocale();
   document.title = `${title} · Jinge`;
   document.querySelector('meta[name="description"]')?.setAttribute('content', description);
 }

@@ -30,16 +30,19 @@ const packages = [
   },
   {
     number: '04',
-    name: 'jinge-demos',
-    tag: 'EXAMPLES',
-    text: t('从最小组件到 TodoMVC，涵盖表单、插槽、动画、国际化与第三方图表集成。'),
-    href: 'https://github.com/jingeweb/jinge-demos',
-    doc: '/examples/',
+    name: 'jinge-antd',
+    tag: 'COMPONENTS',
+    text: t(
+      '面向 PC 中台的 Ant Design 风格组件库。表单、表格、弹层等常用界面，沿用统一的交互与视觉。',
+    ),
+    href: 'https://github.com/jingeweb/jinge-antd',
+    doc: 'https://jinge-antd.embjs.com/',
+    external: true,
   },
 ];
 
 export function Ecosystem() {
-  setMeta(t('生态与关于'), t('了解 Jinge 的运行时、编译器、路由、示例与开源贡献。'));
+  setMeta(t('生态与关于'), t('了解 Jinge 的运行时、编译器、路由、组件库与开源贡献。'));
   return (
     <main
       id="main-content"
@@ -82,6 +85,8 @@ export function Ecosystem() {
               <a
                 className="text-link inline-flex items-center gap-5 text-[12px] font-semibold text-brand hover:gap-6.5"
                 href={href(pkg.doc)}
+                target={pkg.external ? '_blank' : undefined}
+                rel={pkg.external ? 'noreferrer' : undefined}
               >
                 {t('阅读文档 →')}
               </a>

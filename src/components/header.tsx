@@ -1,9 +1,11 @@
 import { onMount, ref, t, vm } from 'jinge';
+import { useNavigate } from 'jinge-router';
 
-import { href, locale, switchLocale } from '../i18n';
+import { currentLocale, href, language } from '../i18n';
 import { stripLocale } from '../locale';
 import { prefetchRoute } from '../routes';
 import { ui, toggleTheme } from '../state';
+import { switchLocale } from '../switch-locale';
 
 function isSection(path: string, section: string) {
   return stripLocale(path).startsWith(section);
@@ -25,6 +27,7 @@ export function Logo() {
 }
 
 export function Header() {
+  const navigate = useNavigate();
   // Evaluated per mount: `t()` needs the dictionary, which is loaded before the first render.
   const links = vm([
     { href: '/guide/introduction/', section: '/guide', label: t('指南') },
@@ -33,13 +36,12 @@ export function Header() {
     { href: '/router/overview/', section: '/router', label: t('路由') },
     { href: '/ecosystem/', section: '/ecosystem', label: t('生态') },
   ]);
-  const language = ref<HTMLSelectElement>();
+  const languageSelect = ref<HTMLSelectElement>();
   const syncLanguage = () => {
-    if (language.value) language.value.value = locale;
+    if (languageSelect.value) languageSelect.value.value = currentLocale();
   };
   onMount(() => {
-    // History can restore native select values after the document's scripts run.
-    // The URL remains authoritative for the language of this document.
+    // The shell is re-created on every language switch, but history may restore a stale value.
     window.addEventListener('pageshow', syncLanguage);
     requestAnimationFrame(syncLanguage);
     return () => window.removeEventListener('pageshow', syncLanguage);
@@ -69,24 +71,19 @@ export function Header() {
           ))}
         </nav>
         <div className="header-actions ml-auto flex items-center gap-4.25 max-[950px]:gap-3 max-[760px]:gap-2.75">
-          <button
-            className="search-trigger flex h-8.25 w-47.5 items-center gap-2.5 rounded-md border border-solid border-line bg-subtle px-2.25 py-1 text-[11px] text-muted max-[1150px]:w-37.5 max-[950px]:w-8.25 max-[950px]:justify-center max-[950px]:border-0 max-[950px]:bg-transparent max-[950px]:p-0 max-[950px]:[&_>_span:nth-child(2)]:hidden [&_kbd]:ml-auto [&_kbd]:rounded-[3px] [&_kbd]:border [&_kbd]:border-solid [&_kbd]:border-line [&_kbd]:bg-surface [&_kbd]:px-1 [&_kbd]:py-0 [&_kbd]:text-[10px] max-[950px]:[&_kbd]:hidden"
-            on:click={() => {
-              ui.search = true;
-            }}
-            aria-label={t('搜索文档')}
-          >
-            <span className="search-icon text-[21px] leading-[1]">⌕</span>
-            <span>{t('搜索文档')}</span>
-            <kbd>⌘ K</kbd>
-          </button>
           <select
-            ref={language}
+            ref={languageSelect}
             autoComplete="off"
             className="language-select w-22 min-w-0 rounded-md border border-line bg-surface px-2 py-1 text-[11px] text-muted max-[760px]:w-20 max-[450px]:text-[10px]"
             aria-label={t('语言')}
-            value={locale}
-            on:change={(event) => switchLocale(event.target.value)}
+            aria-busy={language.loading}
+            value={currentLocale()}
+            on:change={(event) => {
+              const select = event.target;
+              void switchLocale(select.value, navigate).then((ok) => {
+                if (!ok) select.value = currentLocale();
+              });
+            }}
           >
             <option value="zh-CN" lang="zh-CN">
               简体中文

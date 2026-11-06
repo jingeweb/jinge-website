@@ -4,7 +4,7 @@ import { useParams } from 'jinge-router';
 import { Html } from '../components/html';
 import { PagePending } from '../components/pending';
 import { ensureLoaded, setMeta, store, type Demo, type SourceFile } from '../data';
-import { href, locale } from '../i18n';
+import { currentLocale, href } from '../i18n';
 import { copyText } from '../state';
 
 const sourceModules = import.meta.glob<SourceFile[]>('../generated/examples/**/*.json', {
@@ -169,7 +169,7 @@ function ExampleDetail() {
     state.frame = href(`/preview/${demo.id}/`);
     setMeta(demo.title, demo.desc);
     try {
-      const loader = sourceModules[`../generated/examples/${locale}/${demo.id}.json`];
+      const loader = sourceModules[`../generated/examples/${currentLocale()}/${demo.id}.json`];
       if (!loader) throw new Error(t('示例源码尚未生成'));
       const files = await loader();
       if (ticket !== generation) return;
